@@ -1,14 +1,14 @@
 import React from 'react'
 
-import {Navbar} from './components'
-import Routes from './routes'
+import Root from './components/root'
+import CssBaseline from '@material-ui/core/CssBaseline'
 
 const App = () => {
   return (
-    <div>
-      <Navbar />
-      <Routes />
-    </div>
+    <React.Fragment>
+      <CssBaseline />
+      <Root />
+    </React.Fragment>
   )
 }
 

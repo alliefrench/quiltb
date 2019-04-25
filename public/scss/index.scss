@@ -1,29 +1,47 @@
-// import any scss files you create (in the public/scss folder) here so your application can use them!
-
-// Learn SASS Documentation: https://sass-lang.com/guide
-// SASS Reference: https://sass-lang.com/documentation/file.SASS_REFERENCE.html
-
-// See an example import below
-// @import './component.scss';
-
 body {
   font-family: sans-serif;
-
-  a {
-    text-decoration: none;
-  }
-
-  label {
-    display: block;
-  }
-
-  nav a {
-    display: inline-block;
-    margin: 1em;
-  }
-
-  form div {
-    margin: 1em;
-    display: inline-block;
-  }
+  margin: 0 auto;
 }
+body a {
+  text-decoration: none;
+}
+body label {
+  display: block;
+}
+
+// #header {
+//   color: white;
+//   background-color: crimson;
+// }
+
+.MuiToolbar-regular-42 {
+  min-height: 80px;
+}
+
+.navBtn {
+  color: white;
+}
+
+.links {
+  margin-left: 40px;
+}
+
+#logo {
+  color: white;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+body nav a {
+  display: inline-block;
+  margin: 1em;
+}
+body form div {
+  margin: 1em;
+  display: inline-block;
+}
+
+#squareParent {
+  margin-left: 30px;
+}
+
+/*# sourceMappingURL=style.css.map*/
