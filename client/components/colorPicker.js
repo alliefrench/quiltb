@@ -7,18 +7,10 @@ function App() {
   return (
     <div>
       <InputColor
-        initialHexColor="#5e72e4"
+        initialHexColor="#F9AA33"
         onChange={setColor}
         placement="right"
       />
-      {/* <div
-        style={{
-          width: 50,
-          height: 50,
-          marginTop: 20,
-          backgroundColor: color.hex
-        }}
-      /> */}
     </div>
   )
 }
