@@ -3,6 +3,7 @@ import InputColor from 'react-input-color'
 
 function App() {
   const [color, setColor] = React.useState({})
+  console.log('colorpicker', color)
 
   return (
     <div>

@@ -2,7 +2,7 @@ import React from 'react'
 
 function Block() {
   return (
-    <svg id="squareParent" width="400" height="400">
+    <svg width="400" height="400">
       <rect
         height="400"
         width="400"

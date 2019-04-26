@@ -44,7 +44,7 @@ body form div {
   display: inline-block;
 }
 
-#squareParent {
+.konvajs-content {
   margin: 30px;
 }
 
@@ -73,4 +73,7 @@ span {
   height: 50px;
 }
 
+.singleBlock:hover {
+  background-color: aqua;
+}
 /*# sourceMappingURL=style.css.map*/

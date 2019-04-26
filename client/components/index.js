@@ -6,5 +6,5 @@
 export {default as Navbar} from './navbar'
 export {default as UserHome} from './user-home'
 export {Login, Signup} from './auth-form'
-export {default as SquareGenerator} from './squareGenerator'
+export {default as SquareGenerator} from './palettes'
 export {default as ColorPicker} from './colorPicker'

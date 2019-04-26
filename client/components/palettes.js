@@ -1,10 +1,10 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import ColorPicker from './colorPicker'
 import AddPalette from './addPalette'
 import RemoveButton from './removePalette'
-import Block from './block'
 
-class Square extends React.Component {
+class PalettesView extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -29,7 +29,6 @@ class Square extends React.Component {
   render() {
     return (
       <div className="container">
-        <Block />
         <div className="colorTools">
           <AddPalette addPalette={this.addPalette} />
           <div id="paletteGrid">
@@ -46,4 +45,12 @@ class Square extends React.Component {
   }
 }
 
-export default Square
+const mapDispatch = dispatch => {
+  return {
+    setCurrColor: hex => dispatch(setCurrentColor(hex))
+  }
+}
+
+export const Palettes = connect(null, mapDispatch)(PalettesView)
+
+export default Palettes
