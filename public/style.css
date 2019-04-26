@@ -65,4 +65,16 @@ span {
 #selectColor {
   margin-left: 20px; }
 
+#currentColor {
+  color: white;
+  font-family: 'Roboto';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px; }
+
+#save {
+  display: flex;
+  justify-content: flex-end; }
+
 /*# sourceMappingURL=style.css.map*/

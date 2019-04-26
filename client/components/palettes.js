@@ -29,10 +29,14 @@ class PalettesView extends React.Component {
   }
 
   render() {
+    const currentColor = this.props.currentColor
     return (
       <div className="container">
         <div className="colorTools">
           <AddPalette addPalette={this.addPalette} />
+          <div id="currentColor" style={{backgroundColor: currentColor}}>
+            Current Color
+          </div>
           <div id="paletteGrid">
             {this.state.paletteCount.map(el => (
               <div key={el.id} className="singlePalette">
@@ -46,6 +50,11 @@ class PalettesView extends React.Component {
     )
   }
 }
+const mapState = state => {
+  return {
+    currentColor: state.blocks.currentColor
+  }
+}
 
 const mapDispatch = dispatch => {
   return {
@@ -53,6 +62,6 @@ const mapDispatch = dispatch => {
   }
 }
 
-export const Palettes = connect(null, mapDispatch)(PalettesView)
+export const Palettes = connect(mapState, mapDispatch)(PalettesView)
 
 export default Palettes

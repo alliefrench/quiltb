@@ -2,18 +2,37 @@ import React from 'react'
 import Palettes from './palettes'
 import Block from './block'
 import {KonvaBlock} from './konvaBlock'
-import {TriangleBlock} from './triangleBlocks'
+import {SaveGrid} from './saveSquare'
+import MakeThumbnail from './thumbnails'
+import {connect} from 'react-redux'
 
-class DesignMain extends React.Component {
+class Design extends React.Component {
   render() {
     return (
       <div className="container">
-        <KonvaBlock />
+        <div>
+          <KonvaBlock />
+          <div id="save">
+            <SaveGrid />
+          </div>
+        </div>
         <Palettes />
-        {/* <TriangleBlock /> */}
+        {/* {this.props.grids && <MakeThumbnail />} */}
       </div>
     )
   }
 }
 
-export default DesignMain
+const mapStateToProps = state => {
+  return {
+    grids: state.blocks.grids
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    changeColor: id => dispatch(updateBlockColor(id))
+  }
+}
+
+export const DesignMain = connect(mapStateToProps, mapDispatch)(Design)

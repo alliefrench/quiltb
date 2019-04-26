@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome, SquareGenerator, Card} from './components'
-import DesignMain from './components/design'
+import {DesignMain} from './components/design'
 import {me} from './store'
 
 /**
