@@ -73,7 +73,12 @@ span {
   height: 50px;
 }
 
-.singleBlock:hover {
-  background-color: aqua;
+#colorpicker {
+  display: flex;
+  align-items: center;
+}
+
+#selectColor {
+  margin-left: 20px;
 }
 /*# sourceMappingURL=style.css.map*/

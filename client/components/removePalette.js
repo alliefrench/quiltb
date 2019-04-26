@@ -19,11 +19,13 @@ function RemoveButton(props) {
   return (
     <div>
       <Button
+        variant="contained"
         className={classes.button}
+        size="small"
         onClick={() => props.removePalette(id)}
       >
         <Typography variant="h6" color="secondary">
-          X
+          x
         </Typography>
       </Button>
     </div>

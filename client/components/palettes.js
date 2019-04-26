@@ -16,8 +16,9 @@ class PalettesView extends React.Component {
   }
 
   addPalette() {
-    const newId =
-      this.state.paletteCount[this.state.paletteCount.length - 1].id + 1
+    const newId = this.state.paletteCount.length
+      ? this.state.paletteCount[this.state.paletteCount.length - 1].id + 1
+      : 0
     this.setState({paletteCount: [...this.state.paletteCount, {id: newId}]})
   }
 

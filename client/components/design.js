@@ -2,6 +2,7 @@ import React from 'react'
 import Palettes from './palettes'
 import Block from './block'
 import {KonvaBlock} from './konvaBlock'
+import {TriangleBlock} from './triangleBlocks'
 
 class DesignMain extends React.Component {
   render() {
@@ -9,6 +10,7 @@ class DesignMain extends React.Component {
       <div className="container">
         <KonvaBlock />
         <Palettes />
+        {/* <TriangleBlock /> */}
       </div>
     )
   }
