@@ -1,7 +1,9 @@
 import React from 'react'
 import InputColor from 'react-input-color'
+import {connect} from 'react-redux'
+import {setCurrentColor} from '../store/blocks'
 
-function App() {
+function App(props) {
   const [color, setColor] = React.useState({})
   console.log('colorpicker', color)
 
@@ -12,8 +14,29 @@ function App() {
         onChange={setColor}
         placement="right"
       />
+      <button
+        type="submit"
+        onClick={() => {
+          console.log('CLICKED THE BUTTON', props)
+          props.setCurrColor(color.hex)
+        }}
+      />
     </div>
   )
 }
 
-export default App
+const mapState = state => {
+  return {
+    currColor: state.blocks.currentColor
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    setCurrColor: hex => dispatch(setCurrentColor(hex))
+  }
+}
+
+export const ColorPicker = connect(mapState, mapDispatch)(App)
+
+export default ColorPicker

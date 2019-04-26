@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import ColorPicker from './colorPicker'
 import AddPalette from './addPalette'
 import RemoveButton from './removePalette'
+import {setCurrentColor} from '../store/blocks'
 
 class PalettesView extends React.Component {
   constructor() {
