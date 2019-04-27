@@ -7,6 +7,16 @@ import MakeThumbnail from './thumbnails'
 import {connect} from 'react-redux'
 
 class Design extends React.Component {
+  constructor() {
+    super()
+    this.state = []
+    this.savedGrids = this.savedGrids.bind(this)
+  }
+
+  savedGrids() {
+    return this.props.grids.length > 0
+  }
+
   render() {
     return (
       <div className="container">
@@ -17,7 +27,7 @@ class Design extends React.Component {
           </div>
         </div>
         <Palettes />
-        {/* {this.props.grids && <MakeThumbnail />} */}
+        {this.savedGrids() && <MakeThumbnail />}
       </div>
     )
   }

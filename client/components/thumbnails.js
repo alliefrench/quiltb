@@ -5,8 +5,8 @@ import {Stage, Layer, Shape, Line} from 'react-konva'
 
 class Thumbnails extends React.Component {
   render() {
-    console.log(this.props.grids[0])
-    // const thumbnail = blockShrinker(this.props.grids[0])
+    const thumbnail = blockShrinker(this.props.grids[0])
+
     return (
       <Stage width={40} height={40} fill="#D9D7D8">
         <Layer>
@@ -15,7 +15,7 @@ class Thumbnails extends React.Component {
               key={triangle.id}
               x={triangle.x}
               y={triangle.y}
-              points={triangle.points[0]}
+              points={triangle.points}
               closed
               fill={triangle.fill}
               onClick={() => this.props.changeColor(triangle.id)}

@@ -24,7 +24,7 @@ export const saveGrid = () => dispatch => {
 const initialState = {
   currentColor: '#F93396',
   all: createTriangleBlocks(),
-  grids: [false]
+  grids: []
 }
 
 export default function(state = initialState, action) {
