@@ -41,35 +41,3 @@ export const createTriangleBlocks = () => {
   })
   return triangleBlocks
 }
-
-// console.log(createTriangleBlocks()[22])
-
-//     <Line
-//             x={0}
-//             y={0}
-//             points={[0, 0, 0, 100, 50, 50]}
-//             closed
-//             fill="red"
-//             onClick={() => this.props.changeColor}
-//           />
-//           <Line
-//             x={0}
-//             y={0}
-//             points={[0, 0, 100, 0, 50, 50]}
-//             closed
-//             fill="blue"
-//           />
-//           <Line
-//             x={0}
-//             y={0}
-//             points={[0, 100, 100, 100, 50, 50]}
-//             closed
-//             fill="purple"
-//           />
-//           <Line
-//             x={0}
-//             y={0}
-//             points={[100, 100, 100, 0, 50, 50]}
-//             closed
-//             fill="green"
-//           />

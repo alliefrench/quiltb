@@ -95,4 +95,20 @@ span {
   display: flex;
   justify-content: flex-end;
 }
+
+.blanket {
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  width: 400px;
+  // height: 600px;
+}
+
+#blanketMaster {
+  display: flex;
+}
+.konvajs-content {
+  margin: 0px;
+  width: 100px;
+}
 /*# sourceMappingURL=style.css.map*/
