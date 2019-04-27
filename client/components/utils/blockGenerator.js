@@ -29,11 +29,13 @@ export const createTriangleBlocks = () => {
   blocksArr.forEach(block => {
     points.forEach((point, index) => {
       triangleBlocks.push({
-        ...block,
+        // ...block,
+        x: block.x,
+        y: block.y,
         points: [point],
         id: block['blockId'] + index,
-        fill: '#d2d4d8',
-        toggle: false
+        fill: '#d2d4d8'
+        // toggle: false
       })
     })
   })

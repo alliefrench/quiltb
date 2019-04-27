@@ -5,6 +5,7 @@ import {KonvaBlock} from './konvaBlock'
 import {SaveGrid} from './saveSquare'
 import MakeThumbnail from './thumbnails'
 import {connect} from 'react-redux'
+import {getGrids} from '../store/blocks'
 
 class Design extends React.Component {
   constructor() {
@@ -12,6 +13,10 @@ class Design extends React.Component {
     this.state = []
     this.savedGrids = this.savedGrids.bind(this)
   }
+
+  // componentDidMount() {
+  //   // this.props.fetchGrids()
+  // }
 
   savedGrids() {
     return this.props.grids.length > 0
@@ -42,6 +47,7 @@ const mapStateToProps = state => {
 const mapDispatch = dispatch => {
   return {
     changeColor: id => dispatch(updateBlockColor(id))
+    // fetchGrids: () => dispatch(getGrids())
   }
 }
 

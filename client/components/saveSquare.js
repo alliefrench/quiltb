@@ -5,6 +5,7 @@ import {withStyles} from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import {saveGrid} from '../store/blocks'
+import {saveGridsToLocal} from './utils/localStorage'
 
 const styles = theme => ({
   button: {
@@ -17,6 +18,7 @@ const styles = theme => ({
 
 function SavingGridView(props) {
   const {classes} = props
+
   return (
     <div>
       <Button
@@ -47,7 +49,8 @@ const SavingGrid = withStyles(styles)(SavingGridView)
 
 const mapState = state => {
   return {
-    currColor: state.blocks.currentColor
+    currColor: state.blocks.currentColor,
+    grids: state.blocks.grids
   }
 }
 
