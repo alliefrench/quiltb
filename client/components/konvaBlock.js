@@ -34,7 +34,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="bigSquare">
         <Stage width={400} height={400} fill="#D9D7D8">
           <Layer>
             {this.props.blocks.map(triangle => (

@@ -23,6 +23,7 @@ class Thumbnails extends React.Component {
             fill="#D9D7D8"
             key={index}
             onClick={() => this.props.chooseGrid(index)}
+            className="thumbnails"
           >
             <Layer>
               {thumbnail.map(triangle => (

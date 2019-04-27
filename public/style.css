@@ -37,7 +37,7 @@ body form div {
   margin: 30px; }
 
 .colorTools {
-  margin-top: 30px; }
+  margin: 30px; }
 
 .paletteGrid {
   display: flex;
@@ -77,14 +77,33 @@ span {
   display: flex;
   justify-content: flex-end; }
 
+#bigSquare {
+  margin: 30px; }
+
+.thumbnails {
+  margin: 30px; }
+
 .blanket {
   display: flex;
   flex-direction: column;
   margin: 0px;
   width: 400px; }
 
+.borders {
+  width: 10px;
+  background-color: lightcoral; }
+
+.horzBorders {
+  width: 100px;
+  height: 10px;
+  background-color: lightcoral; }
+
+.noBorders {
+  color: white; }
+
 #blanketMaster {
-  display: flex; }
+  display: flex;
+  margin: 30px; }
 
 .konvajs-content {
   margin: 0px;
