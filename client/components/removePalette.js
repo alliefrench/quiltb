@@ -4,36 +4,23 @@ import {withStyles} from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
-const styles = theme => ({
-  button: {
-    margin: theme.spacing.unit
-  },
-  input: {
-    display: 'none'
-  }
-})
+// const styles = theme => ({
+//   button: {
+//     margin: theme.spacing.unit
+//   },
+//   input: {
+//     display: 'none'
+//   }
+// })
 
 function RemoveButton(props) {
-  const {classes} = props
+  // const {classes} = props
   const id = props.elId
   return (
-    <div>
-      <Button
-        variant="contained"
-        className={classes.button}
-        size="small"
-        onClick={() => props.removePalette(id)}
-      >
-        <Typography variant="h6" color="secondary">
-          x
-        </Typography>
-      </Button>
+    <div className="paletteBtn" onClick={() => props.removePalette(id)}>
+      remove
     </div>
   )
 }
 
-RemoveButton.propTypes = {
-  classes: PropTypes.object.isRequired
-}
-
-export default withStyles(styles)(RemoveButton)
+export default RemoveButton

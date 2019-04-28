@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import SmallBlock from './smallBlock'
-import {ToggleBorders} from './toggleBorders'
+import ToggleBorders from './toggleBorders'
 
 class Blanket extends React.Component {
   constructor() {
@@ -95,7 +95,10 @@ class Blanket extends React.Component {
           <div className={this.showHorzBorders()} />
         </div>
         <div className={this.showVertBorders()} />
-        <ToggleBorders toggle={this.toggleBorders} />
+        <ToggleBorders
+          toggle={this.toggleBorders}
+          borders={this.state.borders}
+        />
       </div>
     )
   }

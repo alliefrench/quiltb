@@ -7,45 +7,19 @@ import Typography from '@material-ui/core/Typography'
 import {saveGrid} from '../store/blocks'
 import {saveGridsToLocal} from './utils/localStorage'
 
-const styles = theme => ({
-  button: {
-    margin: theme.spacing.unit
-  },
-  input: {
-    display: 'none'
-  }
-})
-
 function SavingGridView(props) {
-  const {classes} = props
-
   return (
-    <div>
-      <Button
-        id="saveGrid"
-        variant="contained"
-        size="large"
-        fontSize="small"
-        color="primary"
-        className={classes.button}
-        onClick={() => {
-          props.saveGrid()
-        }}
-      >
-        <Typography variant="h6" color="inherit">
-          Save
-        </Typography>
-      </Button>
+    <div
+      className="paletteBtn"
+      id="saveGrid"
+      onClick={() => {
+        props.saveGrid()
+      }}
+    >
+      Save
     </div>
   )
 }
-
-SavingGridView.propTypes = {
-  classes: PropTypes.object.isRequired,
-  className: PropTypes.string
-}
-
-const SavingGrid = withStyles(styles)(SavingGridView)
 
 const mapState = state => {
   return {
@@ -60,4 +34,4 @@ const mapDispatch = dispatch => {
   }
 }
 
-export const SaveGrid = connect(mapState, mapDispatch)(SavingGrid)
+export const SaveGrid = connect(mapState, mapDispatch)(SavingGridView)

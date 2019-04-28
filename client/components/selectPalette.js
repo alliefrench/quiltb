@@ -5,52 +5,48 @@ import {withStyles} from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import {setCurrentColor} from '../store/blocks'
-import teal from '@material-ui/core/colors/teal'
-import classNames from 'classnames'
+// import teal from '@material-ui/core/colors/teal'
+// import classNames from 'classnames'
 
-const styles = theme => ({
-  button: {
-    margin: theme.spacing.unit
-  },
-  input: {
-    display: 'none'
-  },
-  // attempt to override MUI styling
-  root: {
-    color: 'teal'
-  }
-})
+// const styles = theme => ({
+//   button: {
+//     margin: theme.spacing.unit
+//   },
+//   input: {
+//     display: 'none'
+//   },
+//   // attempt to override MUI styling
+//   root: {
+//     color: 'teal'
+//   }
+// })
 
 function SelectPalette(props) {
-  const {classes, className} = props
+  // const {classes, className} = props
   return (
     <div>
-      <Button
-        className={classNames(classes.root, className)}
+      <div
+        className="paletteBtn"
         id="selectColor"
-        variant="contained"
-        size="small"
-        fontSize="small"
-        color="primary"
-        className={classes.button}
         onClick={() => {
           props.setCurrColor(props.color)
         }}
+        style={{backgroundColor: props.color}}
       >
-        <Typography variant="h6" color="inherit">
-          select
-        </Typography>
-      </Button>
+        {/* <Typography variant="h6" color="inherit"> */}
+        select
+        {/* </Typography> */}
+      </div>
     </div>
   )
 }
 
-SelectPalette.propTypes = {
-  classes: PropTypes.object.isRequired,
-  className: PropTypes.string
-}
+// SelectPalette.propTypes = {
+//   classes: PropTypes.object.isRequired,
+//   className: PropTypes.string
+// }
 
-const SelectButton = withStyles(styles)(SelectPalette)
+// const SelectButton = withStyles(styles)(SelectPalette)
 
 const mapState = state => {
   return {
@@ -64,4 +60,4 @@ const mapDispatch = dispatch => {
   }
 }
 
-export const ColorSelect = connect(mapState, mapDispatch)(SelectButton)
+export const ColorSelect = connect(mapState, mapDispatch)(SelectPalette)

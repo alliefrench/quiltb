@@ -33,7 +33,7 @@ class PalettesView extends React.Component {
     return (
       <div className="colorTools">
         <div id="currentColor" style={{backgroundColor: currentColor}}>
-          Current Color - Select Below To Change
+          current color - select below to change
         </div>
         <div className="container">
           <AddPalette addPalette={this.addPalette} />
