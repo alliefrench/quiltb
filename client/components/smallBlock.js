@@ -6,7 +6,6 @@ import blockShrinker from './utils/blockShrinker'
 class Block extends React.Component {
   render() {
     const tinyBlock = blockShrinker(this.props.selectedGrid)
-    console.log('TINYBLOCK', tinyBlock)
 
     return (
       <Stage width={100} height={100} fill="#D9D7D8">

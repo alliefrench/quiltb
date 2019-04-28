@@ -1,12 +1,13 @@
 import React from 'react'
 import Palettes from './palettes'
-import Block from './block'
+// import Block from './block'
 import {KonvaBlock} from './konvaBlock'
 import {SaveGrid} from './saveSquare'
 import MakeThumbnail from './thumbnails'
 import {connect} from 'react-redux'
 import GenerateBlanket from './blanketGenerator'
 import {ResetGrid} from './resetSquare'
+import {StatsCard} from './stats'
 
 class Design extends React.Component {
   constructor() {
@@ -27,16 +28,19 @@ class Design extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="blockDesign">
-          <KonvaBlock />
-          <Palettes />
-        </div>
-        <div className="blockRender">
+        <div id="leftRender">
+          <div className="blockDesign">
+            <KonvaBlock />
+            <Palettes />
+          </div>
           <div id="save">
             <SaveGrid />
             <ResetGrid />
+            {this.savedGrids() && <MakeThumbnail />}
           </div>
-          {this.savedGrids() && <MakeThumbnail />}
+          {this.checkSelectedSquare() && <StatsCard />}
+        </div>
+        <div id="blockRender">
           {this.checkSelectedSquare() && <GenerateBlanket />}
         </div>
       </div>

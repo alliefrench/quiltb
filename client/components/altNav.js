@@ -32,7 +32,7 @@ function ButtonAppBar(props) {
             className={classes.grow}
             id="logo"
           >
-            quiltB
+            quilt-B
           </Typography>
         </Link>
         <Toolbar class="md-tall">
