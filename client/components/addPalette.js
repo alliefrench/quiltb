@@ -26,7 +26,7 @@ function ContainedButton(props) {
         }}
       >
         <Typography variant="h6" color="inherit">
-          +
+          add color
         </Typography>
       </Button>
     </div>

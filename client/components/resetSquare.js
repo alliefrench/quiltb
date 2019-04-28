@@ -4,9 +4,7 @@ import PropTypes from 'prop-types'
 import {withStyles} from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
-import {setCurrentColor} from '../store/blocks'
-import teal from '@material-ui/core/colors/teal'
-import classNames from 'classnames'
+import {resetGrid} from '../store/blocks'
 
 const styles = theme => ({
   button: {
@@ -14,54 +12,50 @@ const styles = theme => ({
   },
   input: {
     display: 'none'
-  },
-  // attempt to override MUI styling
-  root: {
-    color: 'teal'
   }
 })
 
-function SelectPalette(props) {
-  const {classes, className} = props
+function ResetGridView(props) {
+  const {classes} = props
+
   return (
     <div>
       <Button
-        className={classNames(classes.root, className)}
-        id="selectColor"
+        id="resetGrid"
         variant="contained"
-        size="small"
+        size="large"
         fontSize="small"
         color="primary"
         className={classes.button}
         onClick={() => {
-          props.setCurrColor(props.color)
+          props.clearGrid()
         }}
       >
         <Typography variant="h6" color="inherit">
-          select
+          Reset
         </Typography>
       </Button>
     </div>
   )
 }
 
-SelectPalette.propTypes = {
+ResetGridView.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string
 }
 
-const SelectButton = withStyles(styles)(SelectPalette)
+const ResettingGrid = withStyles(styles)(ResetGridView)
 
 const mapState = state => {
   return {
-    currColor: state.blocks.currentColor
+    grids: state.blocks.grids
   }
 }
 
 const mapDispatch = dispatch => {
   return {
-    setCurrColor: hex => dispatch(setCurrentColor(hex))
+    clearGrid: () => dispatch(resetGrid())
   }
 }
 
-export const ColorSelect = connect(mapState, mapDispatch)(SelectButton)
+export const ResetGrid = connect(mapState, mapDispatch)(ResettingGrid)

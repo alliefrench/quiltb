@@ -5,8 +5,8 @@ import {KonvaBlock} from './konvaBlock'
 import {SaveGrid} from './saveSquare'
 import MakeThumbnail from './thumbnails'
 import {connect} from 'react-redux'
-// import {getGrids} from '../store/blocks'
 import GenerateBlanket from './blanketGenerator'
+import {ResetGrid} from './resetSquare'
 
 class Design extends React.Component {
   constructor() {
@@ -15,10 +15,6 @@ class Design extends React.Component {
     this.savedGrids = this.savedGrids.bind(this)
     this.checkSelectedSquare = this.checkSelectedSquare.bind(this)
   }
-
-  // componentDidMount() {
-  //   // this.props.fetchGrids()
-  // }
 
   savedGrids() {
     return this.props.grids.length > 0
@@ -31,15 +27,18 @@ class Design extends React.Component {
   render() {
     return (
       <div className="container">
-        <div>
+        <div className="blockDesign">
           <KonvaBlock />
+          <Palettes />
+        </div>
+        <div className="blockRender">
           <div id="save">
             <SaveGrid />
+            <ResetGrid />
           </div>
+          {this.savedGrids() && <MakeThumbnail />}
+          {this.checkSelectedSquare() && <GenerateBlanket />}
         </div>
-        <Palettes />
-        {this.savedGrids() && <MakeThumbnail />}
-        {this.checkSelectedSquare() && <GenerateBlanket />}
       </div>
     )
   }

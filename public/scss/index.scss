@@ -19,7 +19,7 @@ body label {
 // }
 
 .MuiToolbar-regular-42 {
-  min-height: 80px;
+  min-height: 40px;
 }
 
 .navBtn {
@@ -27,12 +27,15 @@ body label {
 }
 
 .links {
+  display: flex;
+  width: 400px;
+  justify-content: space-around;
   margin-left: 40px;
 }
 
 #logo {
   color: white;
-  margin-left: 20px;
+  margin-left: 30px;
   margin-top: 10px;
 }
 body nav a {
@@ -44,12 +47,23 @@ body form div {
   display: inline-block;
 }
 
-.konvajs-content {
-  margin: 30px;
+// .konvajs-content {
+//   margin: 30px;
+// }
+
+.blockDesign {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .colorTools {
-  margin: 30px;
+  margin-left: 30px;
+  max-width: 400px;
+}
+
+#addPalette {
+  margin-right: 20px;
 }
 .paletteGrid {
   display: flex;
@@ -66,6 +80,7 @@ body form div {
   flex-direction: row;
   align-content: center;
   align-items: center;
+  margin-left: 20px;
 }
 
 span {
@@ -93,15 +108,24 @@ span {
 
 #save {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 30px;
 }
 
 #bigSquare {
   margin: 30px;
 }
 
+.blockRender {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .thumbnails {
+  display: flex;
   margin: 30px;
+  margin-right: 15px;
 }
 
 .blanket {
@@ -114,13 +138,13 @@ span {
 
 .borders {
   width: 10px;
-  background-color: lightcoral;
+  background-color: #f9aa33;
 }
 
 .horzBorders {
   width: 100px;
   height: 10px;
-  background-color: lightcoral;
+  background-color: #f9aa33;
 }
 
 .noBorders {
@@ -134,6 +158,10 @@ span {
 .konvajs-content {
   margin: 0px;
   width: 100px;
+}
+
+#toggleBordersBtn {
+  margin-left: 20px;
 }
 
 /*# sourceMappingURL=style.css.map*/

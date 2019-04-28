@@ -27,75 +27,75 @@ class Blanket extends React.Component {
   render() {
     return (
       <div id="blanketMaster">
+        <div className={this.showVertBorders()} />
+        <div>
+          <div className={this.showHorzBorders()} />
+          <SmallBlock className={this.showHorzBorders()} />
+          <div className={this.showHorzBorders()} />
+          <SmallBlock />
+          <div className={this.showHorzBorders()} />
+          <SmallBlock />
+          <div className={this.showHorzBorders()} />
+          <SmallBlock />
+          <div className={this.showHorzBorders()} />
+          <SmallBlock />
+          <div className={this.showHorzBorders()} />
+          <SmallBlock />
+          <div className={this.showHorzBorders()} />
+        </div>
+        <div className={this.showVertBorders()} />
+        <div>
+          <div className={this.showHorzBorders()} />
+          <div className={this.showVertBorders()} />
+          <SmallBlock className={this.showHorzBorders()} />
+          <div className={this.showHorzBorders()} />
+          <SmallBlock />
+          <div className={this.showHorzBorders()} />
+          <SmallBlock />
+          <div className={this.showHorzBorders()} />
+          <SmallBlock />
+          <div className={this.showHorzBorders()} />
+          <SmallBlock />
+          <div className={this.showHorzBorders()} />
+          <SmallBlock />
+          <div className={this.showHorzBorders()} />
+        </div>
+        <div className={this.showVertBorders()} />
+        <div>
+          <div className={this.showHorzBorders()} />
+          <div className={this.showVertBorders()} />
+          <SmallBlock className={this.showHorzBorders()} />
+          <div className={this.showHorzBorders()} />
+          <SmallBlock />
+          <div className={this.showHorzBorders()} />
+          <SmallBlock />
+          <div className={this.showHorzBorders()} />
+          <SmallBlock />
+          <div className={this.showHorzBorders()} />
+          <SmallBlock />
+          <div className={this.showHorzBorders()} />
+          <SmallBlock />
+          <div className={this.showHorzBorders()} />
+        </div>
+        <div className={this.showVertBorders()} />
+        <div>
+          <div className={this.showHorzBorders()} />
+          <div className={this.showVertBorders()} />
+          <SmallBlock className={this.showHorzBorders()} />
+          <div className={this.showHorzBorders()} />
+          <SmallBlock />
+          <div className={this.showHorzBorders()} />
+          <SmallBlock />
+          <div className={this.showHorzBorders()} />
+          <SmallBlock />
+          <div className={this.showHorzBorders()} />
+          <SmallBlock />
+          <div className={this.showHorzBorders()} />
+          <SmallBlock />
+          <div className={this.showHorzBorders()} />
+        </div>
+        <div className={this.showVertBorders()} />
         <ToggleBorders toggle={this.toggleBorders} />
-        <div className={this.showVertBorders()} />
-        <div>
-          <div className={this.showHorzBorders()} />
-          <SmallBlock className={this.showHorzBorders()} />
-          <div className={this.showHorzBorders()} />
-          <SmallBlock />
-          <div className={this.showHorzBorders()} />
-          <SmallBlock />
-          <div className={this.showHorzBorders()} />
-          <SmallBlock />
-          <div className={this.showHorzBorders()} />
-          <SmallBlock />
-          <div className={this.showHorzBorders()} />
-          <SmallBlock />
-          <div className={this.showHorzBorders()} />
-        </div>
-        <div className={this.showVertBorders()} />
-        <div>
-          <div className={this.showHorzBorders()} />
-          <div className={this.showVertBorders()} />
-          <SmallBlock className={this.showHorzBorders()} />
-          <div className={this.showHorzBorders()} />
-          <SmallBlock />
-          <div className={this.showHorzBorders()} />
-          <SmallBlock />
-          <div className={this.showHorzBorders()} />
-          <SmallBlock />
-          <div className={this.showHorzBorders()} />
-          <SmallBlock />
-          <div className={this.showHorzBorders()} />
-          <SmallBlock />
-          <div className={this.showHorzBorders()} />
-        </div>
-        <div className={this.showVertBorders()} />
-        <div>
-          <div className={this.showHorzBorders()} />
-          <div className={this.showVertBorders()} />
-          <SmallBlock className={this.showHorzBorders()} />
-          <div className={this.showHorzBorders()} />
-          <SmallBlock />
-          <div className={this.showHorzBorders()} />
-          <SmallBlock />
-          <div className={this.showHorzBorders()} />
-          <SmallBlock />
-          <div className={this.showHorzBorders()} />
-          <SmallBlock />
-          <div className={this.showHorzBorders()} />
-          <SmallBlock />
-          <div className={this.showHorzBorders()} />
-        </div>
-        <div className={this.showVertBorders()} />
-        <div>
-          <div className={this.showHorzBorders()} />
-          <div className={this.showVertBorders()} />
-          <SmallBlock className={this.showHorzBorders()} />
-          <div className={this.showHorzBorders()} />
-          <SmallBlock />
-          <div className={this.showHorzBorders()} />
-          <SmallBlock />
-          <div className={this.showHorzBorders()} />
-          <SmallBlock />
-          <div className={this.showHorzBorders()} />
-          <SmallBlock />
-          <div className={this.showHorzBorders()} />
-          <SmallBlock />
-          <div className={this.showHorzBorders()} />
-        </div>
-        <div className={this.showVertBorders()} />
       </div>
     )
   }

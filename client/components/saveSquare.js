@@ -32,7 +32,7 @@ function SavingGridView(props) {
           props.saveGrid()
         }}
       >
-        <Typography variant="h6" color="secondary">
+        <Typography variant="h6" color="inherit">
           Save
         </Typography>
       </Button>

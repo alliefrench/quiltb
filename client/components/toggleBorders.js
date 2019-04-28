@@ -30,7 +30,7 @@ function ToggleBordersBtn(props) {
           props.toggle()
         }}
       >
-        <Typography variant="h6" color="secondary">
+        <Typography variant="h6" color="inherit">
           Borders
         </Typography>
       </Button>

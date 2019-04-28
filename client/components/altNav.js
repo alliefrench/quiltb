@@ -25,33 +25,26 @@ function ButtonAppBar(props) {
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar class="md-tall">
-          {/* <IconButton
-            className={classes.menuButton}
+        <Link to="/design">
+          <Typography
+            variant="h3"
             color="inherit"
-            aria-label="Menu"
+            className={classes.grow}
+            id="logo"
           >
-            <MenuIcon />
-          </IconButton> */}
-          <Link to="/design">
-            <Typography
-              variant="h3"
-              color="inherit"
-              className={classes.grow}
-              id="logo"
-            >
-              quiltB
-            </Typography>
-          </Link>
+            quiltB
+          </Typography>
+        </Link>
+        <Toolbar class="md-tall">
           <div className="links">
-            <Link to="/design" className="navBtn">
-              <Button color="inherit">Design</Button>
-            </Link>
             <Link to="/login" className="navBtn">
               <Button color="inherit">Login</Button>
             </Link>
             <Link to="/signup" className="navBtn">
               <Button color="inherit">Sign Up</Button>
+            </Link>
+            <Link to="/design" className="navBtn">
+              <Button color="inherit">Design</Button>
             </Link>
           </div>
         </Toolbar>

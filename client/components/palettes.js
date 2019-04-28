@@ -9,7 +9,7 @@ class PalettesView extends React.Component {
   constructor() {
     super()
     this.state = {
-      paletteCount: [{id: 0}]
+      paletteCount: [{id: 0}, {id: 1}]
     }
     this.addPalette = this.addPalette.bind(this)
     this.removePalette = this.removePalette.bind(this)
@@ -31,12 +31,12 @@ class PalettesView extends React.Component {
   render() {
     const currentColor = this.props.currentColor
     return (
-      <div className="container">
-        <div className="colorTools">
+      <div className="colorTools">
+        <div id="currentColor" style={{backgroundColor: currentColor}}>
+          Current Color - Select Below To Change
+        </div>
+        <div className="container">
           <AddPalette addPalette={this.addPalette} />
-          <div id="currentColor" style={{backgroundColor: currentColor}}>
-            Current Color
-          </div>
           <div id="paletteGrid">
             {this.state.paletteCount.map(el => (
               <div key={el.id} className="singlePalette">
