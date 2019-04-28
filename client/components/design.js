@@ -38,6 +38,8 @@ class Design extends React.Component {
             <ResetGrid />
             {this.savedGrids() && <MakeThumbnail />}
           </div>
+        </div>
+        <div className="areaStatsDiv">
           {this.checkSelectedSquare() && <StatsCard />}
         </div>
         <div id="blockRender">
