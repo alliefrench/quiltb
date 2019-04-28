@@ -34,15 +34,18 @@ class Stats extends React.Component {
     return (
       <div>
         <form id="areaForm" onSubmit={this.handleSumbit}>
-          <div>enter width:</div>
-          <input
-            type="number"
-            name="width"
-            value={this.state.width}
-            required={true}
-            onChange={this.handleChange}
-            style={{width: 40, height: 25}}
-          />
+          <div>
+            {`enter width: `}
+            <input
+              type="number"
+              name="width"
+              value={this.state.width}
+              required={true}
+              onChange={this.handleChange}
+              style={{width: 40, height: 25}}
+            />
+            {` in.`}
+          </div>
         </form>
         <div id="areaBtn">area by color:</div>
         {colorKeys.map(color => (
