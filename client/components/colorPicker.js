@@ -6,7 +6,6 @@ import {ColorSelect} from './selectPalette'
 
 function App(props) {
   const [color, setColor] = React.useState({})
-  console.log('colorpicker', color)
 
   return (
     <div id="colorpicker">
