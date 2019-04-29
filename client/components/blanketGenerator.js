@@ -6,14 +6,15 @@ import ToggleBorders from './toggleBorders'
 class Blanket extends React.Component {
   constructor() {
     super()
-    this.state = {borders: true}
+    this.state = {borders: true, borderColor: '#f9aa33'}
     this.toggleBorders = this.toggleBorders.bind(this)
     this.showHorzBorders = this.showHorzBorders.bind(this)
     this.showVertBorders = this.showVertBorders.bind(this)
+    this.updateBorderColor = this.updateBorderColor.bind(this)
   }
 
   toggleBorders() {
-    this.setState({borders: !this.state.borders})
+    this.setState({...this.state, borders: !this.state.borders})
   }
 
   showHorzBorders() {
@@ -24,74 +25,187 @@ class Blanket extends React.Component {
     return this.state.borders ? 'borders' : 'noBorders'
   }
 
+  updateBorderColor(color) {
+    this.setState({...this.state, borderColor: color})
+  }
+
   render() {
     return (
       <div id="rightSide">
         <div id="blanketMaster">
-          <div className={this.showVertBorders()} />
+          <div
+            className={this.showVertBorders()}
+            style={{backgroundColor: this.state.borderColor}}
+          />
           <div>
-            <div className={this.showHorzBorders()} />
-            <SmallBlock className={this.showHorzBorders()} />
-            <div className={this.showHorzBorders()} />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
+            <SmallBlock
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
             <SmallBlock />
-            <div className={this.showHorzBorders()} />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
             <SmallBlock />
-            <div className={this.showHorzBorders()} />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
             <SmallBlock />
-            <div className={this.showHorzBorders()} />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
             <SmallBlock />
-            <div className={this.showHorzBorders()} />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
           </div>
-          <div className={this.showVertBorders()} />
+          <div
+            className={this.showVertBorders()}
+            style={{backgroundColor: this.state.borderColor}}
+          />
           <div>
-            <div className={this.showHorzBorders()} />
-            <div className={this.showVertBorders()} />
-            <SmallBlock className={this.showHorzBorders()} />
-            <div className={this.showHorzBorders()} />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
+            <div
+              className={this.showVertBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
+            <SmallBlock
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
             <SmallBlock />
-            <div className={this.showHorzBorders()} />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
             <SmallBlock />
-            <div className={this.showHorzBorders()} />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
             <SmallBlock />
-            <div className={this.showHorzBorders()} />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
             <SmallBlock />
-            <div className={this.showHorzBorders()} />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
           </div>
-          <div className={this.showVertBorders()} />
+          <div
+            className={this.showVertBorders()}
+            style={{backgroundColor: this.state.borderColor}}
+          />
           <div>
-            <div className={this.showHorzBorders()} />
-            <div className={this.showVertBorders()} />
-            <SmallBlock className={this.showHorzBorders()} />
-            <div className={this.showHorzBorders()} />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
+            <div
+              className={this.showVertBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
+            <SmallBlock
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
             <SmallBlock />
-            <div className={this.showHorzBorders()} />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
             <SmallBlock />
-            <div className={this.showHorzBorders()} />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
             <SmallBlock />
-            <div className={this.showHorzBorders()} />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
             <SmallBlock />
-            <div className={this.showHorzBorders()} />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
           </div>
-          <div className={this.showVertBorders()} />
+          <div
+            className={this.showVertBorders()}
+            style={{backgroundColor: this.state.borderColor}}
+          />
           <div>
-            <div className={this.showHorzBorders()} />
-            <div className={this.showVertBorders()} />
-            <SmallBlock className={this.showHorzBorders()} />
-            <div className={this.showHorzBorders()} />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
+            <div
+              className={this.showVertBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
+            <SmallBlock
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
             <SmallBlock />
-            <div className={this.showHorzBorders()} />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
             <SmallBlock />
-            <div className={this.showHorzBorders()} />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
             <SmallBlock />
-            <div className={this.showHorzBorders()} />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
             <SmallBlock />
-            <div className={this.showHorzBorders()} />
+            <div
+              className={this.showHorzBorders()}
+              style={{backgroundColor: this.state.borderColor}}
+            />
           </div>
-          <div className={this.showVertBorders()} />
+          <div
+            className={this.showVertBorders()}
+            style={{backgroundColor: this.state.borderColor}}
+          />
         </div>
         <ToggleBorders
           toggle={this.toggleBorders}
           borders={this.state.borders}
+          changeColor={this.updateBorderColor}
         />
       </div>
     )
