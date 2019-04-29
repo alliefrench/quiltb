@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import Konva from 'konva'
-import {Stage, Layer, Shape, Line} from 'react-konva'
+import {Stage, Layer, Line} from 'react-konva'
 import {setCurrentColor, updateBlockColor} from '../store/blocks'
 
 class App extends React.Component {

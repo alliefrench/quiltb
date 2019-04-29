@@ -1,7 +1,5 @@
 import React from 'react'
 import InputColor from 'react-input-color'
-import {ColorSelect} from './selectPalette'
-// import {connect} from 'react-redux'
 
 function ToggleBorders(props) {
   const [color, setColor] = React.useState({})

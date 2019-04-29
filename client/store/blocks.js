@@ -6,15 +6,12 @@ const UPDATE_BLOCK = 'UPDATE_BLOCK'
 const SAVE_GRID = 'SAVE_GRID'
 const SELECT_GRID = 'SELECT_GRID'
 const RESET_GRID = 'RESET_GRID'
-// const GET_GRIDS = 'GET_GRIDS'
 
 const setColor = hex => ({type: SET_COLOR, hex})
 const changeBlockColor = id => ({type: UPDATE_BLOCK, id})
 const savingGrid = id => ({type: SAVE_GRID, id})
 const chooseGrid = idx => ({type: SELECT_GRID, idx})
 const resettingGrid = () => ({type: RESET_GRID})
-
-// const gettingGrids = grids => ({type: GET_GRIDS, grids})
 
 export const setCurrentColor = hex => dispatch => {
   dispatch(setColor(hex))
@@ -35,11 +32,6 @@ export const selectGrid = idx => dispatch => {
 export const resetGrid = () => dispatch => {
   dispatch(resettingGrid())
 }
-
-// export const getGrids = () => dispatch => {
-//   const grids = getGridsFromLocal()
-//   dispatch(gettingGrids(grids))
-// }
 
 const initialState = {
   currentColor: '#F9AA33',
