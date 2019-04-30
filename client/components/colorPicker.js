@@ -14,15 +14,6 @@ function App(props) {
         onChange={setColor}
         placement="right"
       />
-      {/* <button
-        type="submit"
-        onClick={() => {
-          console.log('CLICKED THE BUTTON', props)
-          props.setCurrColor(color.hex)
-        }}
-      >
-        select
-      </button> */}
       <ColorSelect color={color.hex} />
     </div>
   )

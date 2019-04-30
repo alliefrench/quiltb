@@ -6,12 +6,7 @@ import {Stage, Layer, Shape, Line} from 'react-konva'
 import {selectGrid} from '../store/blocks'
 
 class Thumbnails extends React.Component {
-  // handleExportClick = () => {
-  //   console.log(this.stageRef.getStage().toDataURL());
-  // }
   render() {
-    // const thumbnail = blockShrinker(this.props.grids[0])
-
     const thumbnails = this.props.grids.map(grid => blockShrinker(grid))
 
     return (
