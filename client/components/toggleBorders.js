@@ -3,7 +3,6 @@ import InputColor from 'react-input-color'
 
 function ToggleBorders(props) {
   const [color, setColor] = React.useState({})
-  console.log(props)
   return (
     <div className="container">
       <div id="colorpicker">

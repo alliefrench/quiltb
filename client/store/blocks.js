@@ -35,7 +35,7 @@ export const resetGrid = () => dispatch => {
 
 const initialState = {
   currentColor: '#F9AA33',
-  all: createTriangleBlocks(),
+  buildingGrid: createTriangleBlocks(),
   grids: [],
   selectedGrid: []
 }
@@ -47,7 +47,7 @@ export default function(state = initialState, action) {
     case UPDATE_BLOCK:
       return {
         ...state,
-        all: state.all.map(el => {
+        buildingGrid: state.buildingGrid.map(el => {
           if (el.id === action.id) {
             return {...el, fill: state.currentColor}
           } else {
@@ -56,11 +56,11 @@ export default function(state = initialState, action) {
         })
       }
     case SAVE_GRID:
-      return {...state, grids: [...state.grids, state.all]}
+      return {...state, grids: [...state.grids, state.buildingGrid]}
     case SELECT_GRID:
       return {...state, selectedGrid: state.grids[action.idx]}
     case RESET_GRID:
-      return {...state, all: initialState.all}
+      return {...state, buildingGrid: initialState.buildingGrid}
     default:
       return state
   }

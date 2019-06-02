@@ -1,6 +1,5 @@
 import React from 'react'
 import Palettes from './palettes'
-// import Block from './block'
 import {KonvaBlock} from './konvaBlock'
 import {SaveGrid} from './saveSquare'
 import MakeThumbnail from './thumbnails'
@@ -60,7 +59,6 @@ const mapStateToProps = state => {
 const mapDispatch = dispatch => {
   return {
     changeColor: id => dispatch(updateBlockColor(id))
-    // fetchGrids: () => dispatch(getGrids())
   }
 }
 
