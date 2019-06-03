@@ -9,7 +9,7 @@ class PalettesView extends React.Component {
   constructor() {
     super()
     this.state = {
-      palettes: [{id: 0}, {id: 1}]
+      palettes: [{id: 0}]
     }
     this.addPalette = this.addPalette.bind(this)
     this.removePalette = this.removePalette.bind(this)

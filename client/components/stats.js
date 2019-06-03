@@ -32,10 +32,10 @@ class Stats extends React.Component {
     const colorKeys = Object.keys(areaByColor)
 
     return (
-      <div>
+      <div className="areaStatsDiv">
         <form id="areaForm" onSubmit={this.handleSumbit}>
           <div>
-            {`enter width: `}
+            {`width: `}
             <input
               type="number"
               name="width"
@@ -45,18 +45,21 @@ class Stats extends React.Component {
               style={{width: 40, height: 25}}
             />
             {` in.`}
+            <br />
+            sq inches by color:
           </div>
         </form>
-        <div id="areaBtn">area by color:</div>
-        {colorKeys.map(color => (
-          <div
-            key={color}
-            style={{backgroundColor: color}}
-            className="areaField"
-          >
-            {color}: {areaByColor[color]} sq in
-          </div>
-        ))}
+        <div className="colorInches">
+          {colorKeys.map(color => (
+            <div
+              key={color}
+              style={{backgroundColor: color}}
+              className="areaField"
+            >
+              {areaByColor[color]}
+            </div>
+          ))}
+        </div>
       </div>
     )
   }

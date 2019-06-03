@@ -40,9 +40,8 @@ class Design extends React.Component {
             <div className="thumbnailContainer">
               {this.savedGrids() && <MakeThumbnail />}
             </div>
-            <div className="areaStatsDiv">
-              {this.checkSelectedSquare() && <StatsCard />}
-            </div>
+
+            {this.checkSelectedSquare() && <StatsCard />}
           </div>
         </div>
 

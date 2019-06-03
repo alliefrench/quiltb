@@ -202,7 +202,7 @@ span {
   border-radius: 5px;
   color: white;
   font-family: 'Roboto';
-  width: 200px;
+  width: 40px;
   height: 30px;
   box-shadow: 3px 3px 5px grey;
 }
@@ -238,6 +238,13 @@ span {
   margin-top: 30px;
 }
 
+.colorInches {
+  display: flex;
+  flex-wrap: wrap;
+  width: 200px;
+  justify-content: space-evenly;
+}
+
 #rightSide {
   display: flex;
   flex-wrap: wrap;
@@ -260,6 +267,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   margin: 10px;
   background-color: grey;
   border-radius: 5px;
@@ -268,7 +276,6 @@ span {
   width: 200px;
   height: 50px;
   box-shadow: 3px 3px 5px grey;
-  margin-top: 30px;
 }
 
 /*# sourceMappingURL=style.css.map*/
