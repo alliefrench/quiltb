@@ -13,7 +13,7 @@ body label {
 
 .container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .MuiToolbar-regular-42 {
@@ -45,12 +45,6 @@ body nav a {
 body form div {
   margin: 1em;
   display: inline-block;
-}
-
-.blockDesign {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
 }
 
 .colorTools {
@@ -96,7 +90,7 @@ span {
 
 #currentColor {
   color: white;
-  font-family: "Roboto";
+  font-family: 'Roboto';
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,7 +100,7 @@ span {
 
 #save {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
   margin-top: 30px;
 }
@@ -126,6 +120,7 @@ span {
   justify-content: flex-start;
   margin: 10px;
   box-shadow: 3px 3px 5px grey;
+  width: 100px;
 }
 
 .blanket {
@@ -136,18 +131,31 @@ span {
 }
 
 .borders {
-  width: 10px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 500px;
+  height: 570px;
   background-color: #f9aa33;
 }
 
-.horzBorders {
-  width: 100px;
-  height: 10px;
+.insideBorders {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 110px;
   background-color: #f9aa33;
 }
 
 .noBorders {
   color: white;
+}
+
+.borderControls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 #blanketMaster {
@@ -179,7 +187,7 @@ span {
   background-color: grey;
   border-radius: 5px;
   color: white;
-  font-family: "Roboto";
+  font-family: 'Roboto';
   width: 80px;
   height: 30px;
   box-shadow: 3px 3px 5px grey;
@@ -193,10 +201,26 @@ span {
   background-color: grey;
   border-radius: 5px;
   color: white;
-  font-family: "Roboto";
+  font-family: 'Roboto';
   width: 200px;
   height: 30px;
   box-shadow: 3px 3px 5px grey;
+}
+
+.dataColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.thumbnailContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 370px;
+}
+
+.areaStatsDiv {
+  align-self: flex-end;
 }
 
 #areaBtn {
@@ -207,7 +231,7 @@ span {
   background-color: grey;
   border-radius: 5px;
   color: white;
-  font-family: "Roboto";
+  font-family: 'Roboto';
   width: 200px;
   height: 30px;
   box-shadow: 3px 3px 5px grey;
@@ -216,15 +240,20 @@ span {
 
 #rightSide {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex-direction: row;
   align-items: center;
-  margin-right: 80px;
+  min-width: 400px;
+  max-width: 460px;
+  margin: 10px;
+  align-self: flex-start;
+  box-shadow: 3px 3px 5px grey;
 }
 
 #leftRender {
   display: flex;
   max-width: 700px;
+  align-content: flex-start;
 }
 
 #areaForm {
@@ -235,7 +264,7 @@ span {
   background-color: grey;
   border-radius: 5px;
   color: white;
-  font-family: "Roboto";
+  font-family: 'Roboto';
   width: 200px;
   height: 50px;
   box-shadow: 3px 3px 5px grey;

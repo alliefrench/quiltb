@@ -33,11 +33,13 @@ export const resetGrid = () => dispatch => {
   dispatch(resettingGrid())
 }
 
+const initialGrid = createTriangleBlocks()
+
 const initialState = {
   currentColor: '#F9AA33',
-  buildingGrid: createTriangleBlocks(),
+  buildingGrid: initialGrid,
   grids: [],
-  selectedGrid: []
+  selectedGrid: initialGrid
 }
 
 export default function(state = initialState, action) {

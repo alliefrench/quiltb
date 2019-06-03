@@ -4,7 +4,7 @@ import {KonvaBlock} from './konvaBlock'
 import {SaveGrid} from './saveSquare'
 import MakeThumbnail from './thumbnails'
 import {connect} from 'react-redux'
-import GenerateBlanket from './blanketGenerator'
+import GenerateBlanket from './altBlanketGenerator'
 import {ResetGrid} from './resetSquare'
 import {StatsCard} from './stats'
 
@@ -28,21 +28,26 @@ class Design extends React.Component {
     return (
       <div className="container">
         <div id="leftRender">
-          <div className="blockDesign">
+          <div>
             <KonvaBlock />
             <Palettes />
           </div>
-          <div id="save">
-            <SaveGrid />
-            <ResetGrid />
-            {this.savedGrids() && <MakeThumbnail />}
+          <div className="dataColumn">
+            <div id="save">
+              <SaveGrid />
+              <ResetGrid />
+            </div>
+            <div className="thumbnailContainer">
+              {this.savedGrids() && <MakeThumbnail />}
+            </div>
+            <div className="areaStatsDiv">
+              {this.checkSelectedSquare() && <StatsCard />}
+            </div>
           </div>
         </div>
-        <div className="areaStatsDiv">
-          {this.checkSelectedSquare() && <StatsCard />}
-        </div>
+
         <div id="blockRender">
-          {this.checkSelectedSquare() && <GenerateBlanket />}
+          <GenerateBlanket />
         </div>
       </div>
     )
