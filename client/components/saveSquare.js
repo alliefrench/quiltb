@@ -16,17 +16,10 @@ function SavingGridView(props) {
   )
 }
 
-const mapState = state => {
-  return {
-    currColor: state.blocks.currentColor,
-    grids: state.blocks.grids
-  }
-}
-
 const mapDispatch = dispatch => {
   return {
     saveGrid: () => dispatch(saveGrid())
   }
 }
 
-export const SaveGrid = connect(mapState, mapDispatch)(SavingGridView)
+export const SaveGrid = connect(null, mapDispatch)(SavingGridView)

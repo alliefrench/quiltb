@@ -2,7 +2,7 @@
 import React from 'react'
 import blockShrinker from './utils/blockShrinker'
 import {connect} from 'react-redux'
-import {Stage, Layer, Shape, Line} from 'react-konva'
+import {Stage, Layer, Line} from 'react-konva'
 import {selectGrid} from '../store/blocks'
 
 class Thumbnails extends React.Component {
