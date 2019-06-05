@@ -5,6 +5,7 @@ const SET_COLOR = 'SET_COLOR'
 const UPDATE_BLOCK = 'UPDATE_BLOCK'
 const SAVE_GRID = 'SAVE_GRID'
 const SELECT_GRID = 'SELECT_GRID'
+const DELETE_GRID = 'DELETE_GRID'
 const RESET_GRID = 'RESET_GRID'
 
 const setColor = hex => ({type: SET_COLOR, hex})
@@ -12,6 +13,7 @@ const changeBlockColor = id => ({type: UPDATE_BLOCK, id})
 const savingGrid = id => ({type: SAVE_GRID, id})
 const chooseGrid = idx => ({type: SELECT_GRID, idx})
 const resettingGrid = () => ({type: RESET_GRID})
+const removeGrid = id => ({type: DELETE_GRID, id})
 
 export const setCurrentColor = hex => dispatch => {
   dispatch(setColor(hex))
@@ -31,6 +33,10 @@ export const selectGrid = idx => dispatch => {
 
 export const resetGrid = () => dispatch => {
   dispatch(resettingGrid())
+}
+
+export const deleteGrid = id => dispatch => {
+  dispatch(removeGrid(id))
 }
 
 const initialGrid = createTriangleBlocks()
