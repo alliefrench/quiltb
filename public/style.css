@@ -56,14 +56,11 @@ body form div {
   margin-right: 20px;
 }
 
-.paletteGrid {
+#paletteGrid {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  min-width: 60px;
-  max-width: 100px;
-  min-height: 400px;
-  max-height: 400px;
+  height: 200px;
+  overflow-y: scroll;
 }
 
 .singlePalette {
@@ -217,6 +214,8 @@ span {
   flex-wrap: wrap;
   flex-direction: column;
   height: 370px;
+  max-width: 450px;
+  overflow-x: scroll;
 }
 
 .areaStatsDiv {

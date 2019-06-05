@@ -10,7 +10,7 @@ class Thumbnails extends React.Component {
     const thumbnails = this.props.grids.map(grid => blockShrinker(grid))
 
     return (
-      <div className="thumbnailContainer">
+      <div>
         {thumbnails.map((thumbnail, index) => (
           <Stage
             width={100}
