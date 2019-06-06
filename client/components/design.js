@@ -7,6 +7,7 @@ import {connect} from 'react-redux'
 import GenerateBlanket from './altBlanketGenerator'
 import {ResetGrid} from './resetSquare'
 import {StatsCard} from './stats'
+import Instructions from './instructions'
 
 class Design extends React.Component {
   constructor() {
@@ -29,19 +30,20 @@ class Design extends React.Component {
       <div className="container">
         <div id="leftRender">
           <div>
-            <KonvaBlock />
             <Palettes />
-          </div>
-          <div className="dataColumn">
+            <KonvaBlock />
             <div id="save">
               <SaveGrid />
               <ResetGrid />
             </div>
+          </div>
+          <div className="dataColumn">
             <div className="thumbnailContainer">
+              {!this.savedGrids() && <Instructions />}
               {this.savedGrids() && <MakeThumbnail />}
             </div>
 
-            {this.checkSelectedSquare() && <StatsCard />}
+            {/* {this.checkSelectedSquare() && <StatsCard />} */}
           </div>
         </div>
 

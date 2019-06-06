@@ -18,7 +18,7 @@ class Blanket extends React.Component {
   }
 
   showInsideBorders() {
-    return this.state.borders ? 'insideBorders' : 'noBorders'
+    return this.state.borders ? 'insideBorders' : ''
   }
 
   showEdgeBorders() {
