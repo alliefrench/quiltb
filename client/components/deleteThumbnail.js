@@ -7,9 +7,10 @@ function DeleteGrid(props) {
     <div
       className="deleteBtn"
       onClick={() => {
-        props.removeGrid(props.id)
+        props.removeGrid(props.idx)
       }}
     >
+      {' '}
       x
     </div>
   )

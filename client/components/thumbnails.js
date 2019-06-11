@@ -4,6 +4,7 @@ import blockShrinker from './utils/blockShrinker'
 import {connect} from 'react-redux'
 import {Stage, Layer, Line} from 'react-konva'
 import {selectGrid} from '../store/blocks'
+import {DeleteGridButton} from './deleteThumbnail'
 
 class Thumbnails extends React.Component {
   render() {
@@ -12,27 +13,30 @@ class Thumbnails extends React.Component {
     return (
       <div className="thumbnailContainer">
         {thumbnails.map((thumbnail, index) => (
-          <Stage
-            width={100}
-            height={100}
-            fill="#D9D7D8"
-            key={index}
-            onClick={() => this.props.chooseGrid(index)}
-            className="thumbnails"
-          >
-            <Layer>
-              {thumbnail.map(triangle => (
-                <Line
-                  key={triangle.id}
-                  x={triangle.x}
-                  y={triangle.y}
-                  points={triangle.points}
-                  closed
-                  fill={triangle.fill}
-                />
-              ))}
-            </Layer>
-          </Stage>
+          <div>
+            <Stage
+              width={100}
+              height={100}
+              fill="#D9D7D8"
+              key={index}
+              onClick={() => this.props.chooseGrid(index)}
+              className="thumbnails"
+            >
+              <Layer>
+                {thumbnail.map(triangle => (
+                  <Line
+                    key={triangle.id}
+                    x={triangle.x}
+                    y={triangle.y}
+                    points={triangle.points}
+                    closed
+                    fill={triangle.fill}
+                  />
+                ))}
+              </Layer>
+            </Stage>
+            <DeleteGridButton idx={index} />
+          </div>
         ))}
       </div>
     )

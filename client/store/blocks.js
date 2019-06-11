@@ -69,6 +69,14 @@ export default function(state = initialState, action) {
       return {...state, selectedGrid: state.grids[action.idx]}
     case RESET_GRID:
       return {...state, buildingGrid: initialState.buildingGrid}
+    case DELETE_GRID:
+      const remainingGrids = state.grids.filter(
+        (grid, idx) => idx !== action.id
+      )
+      return {
+        ...state,
+        grids: remainingGrids
+      }
     default:
       return state
   }
