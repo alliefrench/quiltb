@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Stage, Layer, Line} from 'react-konva'
 import blockShrinker from './utils/blockShrinker'
+import {createTriangleBlocks} from './utils/blockGenerator'
 
 class Block extends React.Component {
   render() {

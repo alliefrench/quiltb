@@ -1,7 +1,6 @@
 import React from 'react'
-import Navbar from './navbar'
 import Routes from '../routes'
-import ButtonAppBar from './altNav'
+import ButtonAppBar from './nav'
 
 const Root = () => {
   return (

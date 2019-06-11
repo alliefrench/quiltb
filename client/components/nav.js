@@ -35,7 +35,7 @@ function ButtonAppBar(props) {
             quilt-B
           </Typography>
         </Link>
-        <Toolbar class="md-tall">
+        <Toolbar className="md-tall">
           <div className="links">
             <Link to="/login" className="navBtn">
               <Button color="inherit">Login</Button>

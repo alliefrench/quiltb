@@ -9,22 +9,21 @@ class PalettesView extends React.Component {
   constructor() {
     super()
     this.state = {
-      paletteCount: [{id: 0}, {id: 1}]
+      palettes: [{id: 0}]
     }
     this.addPalette = this.addPalette.bind(this)
     this.removePalette = this.removePalette.bind(this)
   }
 
   addPalette() {
-    const newId = this.state.paletteCount.length
-      ? this.state.paletteCount[this.state.paletteCount.length - 1].id + 1
-      : 0
-    this.setState({paletteCount: [...this.state.paletteCount, {id: newId}]})
+    const palArr = this.state.palettes
+    const newId = palArr.length ? palArr[palArr.length - 1].id + 1 : 0
+    this.setState({palettes: [...palArr, {id: newId}]})
   }
 
   removePalette(id) {
     this.setState({
-      paletteCount: this.state.paletteCount.filter(el => el.id !== id)
+      palettes: this.state.palettes.filter(el => el.id !== id)
     })
   }
 
@@ -38,7 +37,7 @@ class PalettesView extends React.Component {
         <div className="container">
           <AddPalette addPalette={this.addPalette} />
           <div id="paletteGrid">
-            {this.state.paletteCount.map(el => (
+            {this.state.palettes.map(el => (
               <div key={el.id} className="singlePalette">
                 <ColorPicker />
                 <RemoveButton removePalette={this.removePalette} elId={el.id} />
@@ -56,12 +55,6 @@ const mapState = state => {
   }
 }
 
-const mapDispatch = dispatch => {
-  return {
-    setCurrColor: hex => dispatch(setCurrentColor(hex))
-  }
-}
-
-export const Palettes = connect(mapState, mapDispatch)(PalettesView)
+export const Palettes = connect(mapState, null)(PalettesView)
 
 export default Palettes

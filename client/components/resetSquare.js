@@ -16,16 +16,10 @@ function ResetGridView(props) {
   )
 }
 
-const mapState = state => {
-  return {
-    grids: state.blocks.grids
-  }
-}
-
 const mapDispatch = dispatch => {
   return {
     clearGrid: () => dispatch(resetGrid())
   }
 }
 
-export const ResetGrid = connect(mapState, mapDispatch)(ResetGridView)
+export const ResetGrid = connect(null, mapDispatch)(ResetGridView)
