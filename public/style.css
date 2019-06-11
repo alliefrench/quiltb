@@ -122,6 +122,28 @@ span {
   height: 100px;
 }
 
+.deleteBtn {
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  border-radius: 5px;
+  text-align: center;
+  width: 15px;
+  height: 15px;
+  box-shadow: 3px 3px 5px grey;
+}
+
+.editBtn {
+  background-color: blue;
+  color: white;
+  font-size: 12px;
+  border-radius: 5px;
+  text-align: center;
+  width: 25px;
+  height: 15px;
+  box-shadow: 3px 3px 5px grey;
+}
+
 .blanket {
   display: flex;
   flex-direction: column;

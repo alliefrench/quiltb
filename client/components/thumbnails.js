@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import {Stage, Layer, Line} from 'react-konva'
 import {selectGrid} from '../store/blocks'
 import {DeleteGridButton} from './deleteThumbnail'
+import {EditGridButton} from './editThumbnail'
 
 class Thumbnails extends React.Component {
   render() {
@@ -35,7 +36,10 @@ class Thumbnails extends React.Component {
                 ))}
               </Layer>
             </Stage>
-            <DeleteGridButton idx={index} />
+            <div className="container">
+              <DeleteGridButton idx={index} />
+              <EditGridButton idx={index} />
+            </div>
           </div>
         ))}
       </div>

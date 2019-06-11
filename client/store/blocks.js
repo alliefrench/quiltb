@@ -2,17 +2,19 @@
 import {createTriangleBlocks} from '../components/utils/blockGenerator'
 
 const SET_COLOR = 'SET_COLOR'
-const UPDATE_BLOCK = 'UPDATE_BLOCK'
+const UPDATE_BUILDING_GRID = 'UPDATE_BUILDING_GRID'
 const SAVE_GRID = 'SAVE_GRID'
 const SELECT_GRID = 'SELECT_GRID'
 const DELETE_GRID = 'DELETE_GRID'
-const RESET_GRID = 'RESET_GRID'
+const EDIT_GRID = 'EDIT_GRID'
+const RESET_BUILDING_GRID = 'RESET_BUILDING_GRID'
 
 const setColor = hex => ({type: SET_COLOR, hex})
-const changeBlockColor = id => ({type: UPDATE_BLOCK, id})
+const changeBlockColor = id => ({type: UPDATE_BUILDING_GRID, id})
 const savingGrid = id => ({type: SAVE_GRID, id})
 const chooseGrid = idx => ({type: SELECT_GRID, idx})
-const resettingGrid = () => ({type: RESET_GRID})
+const resettingGrid = () => ({type: RESET_BUILDING_GRID})
+const editingGrid = idx => ({type: EDIT_GRID, idx})
 const removeGrid = id => ({type: DELETE_GRID, id})
 
 export const setCurrentColor = hex => dispatch => {
@@ -35,6 +37,10 @@ export const resetGrid = () => dispatch => {
   dispatch(resettingGrid())
 }
 
+export const editGrid = idx => dispatch => {
+  dispatch(editingGrid(idx))
+}
+
 export const deleteGrid = id => dispatch => {
   dispatch(removeGrid(id))
 }
@@ -52,7 +58,7 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case SET_COLOR:
       return {...state, currentColor: action.hex}
-    case UPDATE_BLOCK:
+    case UPDATE_BUILDING_GRID:
       return {
         ...state,
         buildingGrid: state.buildingGrid.map(el => {
@@ -67,8 +73,10 @@ export default function(state = initialState, action) {
       return {...state, grids: [...state.grids, state.buildingGrid]}
     case SELECT_GRID:
       return {...state, selectedGrid: state.grids[action.idx]}
-    case RESET_GRID:
+    case RESET_BUILDING_GRID:
       return {...state, buildingGrid: initialState.buildingGrid}
+    case EDIT_GRID:
+      return {...state, buildingGrid: state.grids[action.idx]}
     case DELETE_GRID:
       const remainingGrids = state.grids.filter(
         (grid, idx) => idx !== action.id
