@@ -35,7 +35,8 @@ class Stats extends React.Component {
       <div className="areaStatsDiv">
         <form id="areaForm" onSubmit={this.handleSumbit}>
           <div>
-            {`width: `}
+            approximate square inches by color -
+            {` width: `}
             <input
               type="number"
               name="width"
@@ -46,7 +47,6 @@ class Stats extends React.Component {
             />
             {` in.`}
             <br />
-            sq inches by color:
           </div>
         </form>
         <div className="colorInches">

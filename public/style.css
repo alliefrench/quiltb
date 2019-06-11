@@ -103,13 +103,20 @@ span {
   margin-top: 15px;
 }
 
+.instructions {
+  background-color: #808080;
+  color: white;
+  box-shadow: 3px 3px 5px grey;
+  padding: 5px;
+}
+
 #bigSquare {
-  /* margin: 30px; */
   box-shadow: 3px 3px 5px grey;
 }
 
 #blockRender {
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
 }
 
@@ -123,7 +130,7 @@ span {
 }
 
 .deleteBtn {
-  background-color: red;
+  background-color: #808080;
   color: white;
   font-size: 12px;
   border-radius: 5px;
@@ -134,7 +141,7 @@ span {
 }
 
 .editBtn {
-  background-color: blue;
+  background-color: #808080;
   color: white;
   font-size: 12px;
   border-radius: 5px;
@@ -245,10 +252,11 @@ span {
   width: 300px;
   overflow-y: scroll;
   margin-top: 30px;
+  padding-bottom: 7px;
 }
 
 .areaStatsDiv {
-  align-self: flex-end;
+  /* align-self: flex-end; */
 }
 
 #areaBtn {
@@ -301,7 +309,6 @@ span {
   border-radius: 5px;
   color: white;
   font-family: 'Roboto';
-  width: 200px;
   height: 50px;
   box-shadow: 3px 3px 5px grey;
 }

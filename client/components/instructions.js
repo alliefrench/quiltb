@@ -2,13 +2,14 @@ import React from 'react'
 
 function Instructions() {
   return (
-    <div>
+    <div className="instructions">
       <div>Time to design.</div>
-      <div>
-        Add colors to your palette, fill in the grid and save your square. Once
-        saved, you can click the thumbnail to see your design mapped out in a
-        full blanket.
-      </div>
+      <br />
+      <div>1 - add colors to your palette</div>
+      <br />
+      <div>2 - fill in the grid and save your square</div>
+      <br />
+      <div>3 - click on the grid to see it mapped out as a blanket</div>
     </div>
   )
 }

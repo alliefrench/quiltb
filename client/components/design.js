@@ -42,13 +42,12 @@ class Design extends React.Component {
               {!this.savedGrids() && <Instructions />}
               {this.savedGrids() && <MakeThumbnail />}
             </div>
-
-            {/* {this.checkSelectedSquare() && <StatsCard />} */}
           </div>
         </div>
 
         <div id="blockRender">
           <GenerateBlanket />
+          {this.checkSelectedSquare() && <StatsCard />}
         </div>
       </div>
     )
