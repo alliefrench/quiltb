@@ -1,7 +1,10 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, Projects, Squares} = require('../server/db/models')
+// const squarebuilder = require('../client/components/utils/blockGenerator')
+
+const seedSquare = require('./seedSquare')
 
 async function seed() {
   await db.sync({force: true})
@@ -12,7 +15,17 @@ async function seed() {
     User.create({email: 'murphy@email.com', password: '123'})
   ])
 
+  const projects = await Promise.all([
+    Projects.create({name: 'My First Quilt', userId: 1})
+  ])
+
+  const squares = await Promise.all([
+    Squares.create({square: seedSquare, projectId: 1})
+  ])
+
   console.log(`seeded ${users.length} users`)
+  console.log(`seeded ${squares.length} squares`)
+  console.log(`seeded ${projects.length} projects`)
   console.log(`seeded successfully`)
 }
 
