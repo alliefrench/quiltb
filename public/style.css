@@ -277,7 +277,6 @@ span {
 .colorInches {
   display: flex;
   flex-wrap: wrap;
-  width: 200px;
   justify-content: space-evenly;
 }
 
