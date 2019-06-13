@@ -46,11 +46,12 @@ class Blanket extends React.Component {
           className={this.showEdgeBorders()}
           style={{backgroundColor: this.state.borderColor}}
         >
-          {squareCount.map(el => (
+          {squareCount.map((el, idx) => (
             // eslint-disable-next-line react/jsx-key
             <div
               className={this.showInsideBorders()}
               style={{backgroundColor: this.state.borderColor}}
+              key={idx}
             >
               <SmallBlock />
             </div>
