@@ -1,0 +1,70 @@
+import axios from 'axios'
+
+const GET_PROJECTS = 'GET_PROJECTS'
+const CREATE_PROJECT = 'CREATE_PROJECT'
+const SELECT_PROJECT = 'SELECT_PROJECT'
+const DELETE_PROJECT = 'DELETE_PROJECT'
+
+const gettingProjects = projects => ({type: GET_PROJECTS, projects})
+const addProject = project => ({type: CREATE_PROJECT, project})
+const chooseProject = id => ({type: SELECT_PROJECT, id})
+const removeProject = id => ({type: DELETE_PROJECT, id})
+
+export const getProjects = userId => async dispatch => {
+  try {
+    const {data} = await axios.get('/api/projects', userId)
+    dispatch(gettingProjects(data))
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const createProject = (name, userId) => async dispatch => {
+  try {
+    const {data} = await axios.post('/api/projects', {name, userId})
+    dispatch(addProject(data))
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const selectProject = id => dispatch => {
+  dispatch(chooseProject(id))
+}
+
+export const deleteProject = id => async dispatch => {
+  try {
+    await axios.delete('/api/projects', id)
+    dispatch(removeProject(id))
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const initialState = {
+  projects: [],
+  selectedProject: {}
+}
+
+export default function(state = initialState, action) {
+  switch (action.type) {
+    case GET_PROJECTS:
+      return {...state, projects: action.projects}
+    case CREATE_PROJECT:
+      return {...state, projects: [...state.projects, action.project]}
+    case SELECT_PROJECT:
+      return {
+        ...state,
+        selectedProject: state.projects.filter(
+          project => project.id === action.id
+        )
+      }
+    case DELETE_PROJECT:
+      return {
+        ...state,
+        projects: state.projects.filter(project => project.id !== action.id)
+      }
+    default:
+      return state
+  }
+}
