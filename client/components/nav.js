@@ -1,4 +1,5 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {withStyles} from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
@@ -6,6 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import {Link} from 'react-router-dom'
+import {logout} from '../store'
 
 const styles = {
   root: {
@@ -20,8 +22,9 @@ const styles = {
   }
 }
 
-function ButtonAppBar(props) {
-  const {classes} = props
+function NavBar(props) {
+  const {classes, handleClick, isLoggedIn} = props
+  console.log(props)
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -36,13 +39,27 @@ function ButtonAppBar(props) {
           </Typography>
         </Link>
         <Toolbar className="md-tall">
+          {isLoggedIn ? (
+            <div className="links">
+              <a href="#" onClick={handleClick}>
+                <Button color="inherit">Logout</Button>
+              </a>
+              <Link to="/home">
+                <Button color="inherit">Home</Button>
+              </Link>
+            </div>
+          ) : (
+            <div className="links">
+              <Link to="/login" className="navBtn">
+                <Button color="inherit">Login</Button>
+              </Link>
+              <Link to="/signup" className="navBtn">
+                <Button color="inherit">Sign Up</Button>
+              </Link>{' '}
+            </div>
+          )}
+
           <div className="links">
-            <Link to="/login" className="navBtn">
-              <Button color="inherit">Login</Button>
-            </Link>
-            <Link to="/signup" className="navBtn">
-              <Button color="inherit">Sign Up</Button>
-            </Link>
             <Link to="/design" className="navBtn">
               <Button color="inherit">Design</Button>
             </Link>
@@ -53,8 +70,26 @@ function ButtonAppBar(props) {
   )
 }
 
+const mapState = state => {
+  return {
+    isLoggedIn: !!state.user.id
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    handleClick() {
+      dispatch(logout())
+    }
+  }
+}
+
+const ButtonAppBar = connect(mapState, mapDispatch)(NavBar)
+
 ButtonAppBar.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired
 }
 
 export default withStyles(styles)(ButtonAppBar)

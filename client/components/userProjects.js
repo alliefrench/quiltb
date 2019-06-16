@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getProjects} from '../store/projects'
+import {getProjects, selectProject} from '../store/projects'
+import {Link} from 'react-router-dom'
 
 class UserProjects extends React.Component {
   constructor() {
@@ -14,7 +15,9 @@ class UserProjects extends React.Component {
   render() {
     return this.props.projects ? (
       this.props.projects.map(project => (
-        <div key={project.id}>{project.name}</div>
+        <div key={project.id} onClick={this.props.chooseProject(project.id)}>
+          <Link to={`/design/${project.id}`}>{project.name}</Link>
+        </div>
       ))
     ) : (
       <div>No projects yet!</div>
@@ -31,7 +34,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    loadProjects: id => dispatch(getProjects(id))
+    loadProjects: id => dispatch(getProjects(id)),
+    chooseProject: id => dispatch(selectProject(id))
   }
 }
 
