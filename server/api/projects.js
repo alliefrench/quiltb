@@ -4,8 +4,10 @@ module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
-    const projects = await Projects.findAll({include: {model: Squares}})
-    // {where: {userId: req.id}}
+    const projects = await Projects.findAll({
+      where: {userId: req.user.id},
+      include: {model: Squares}
+    })
 
     res.json(projects)
   } catch (error) {

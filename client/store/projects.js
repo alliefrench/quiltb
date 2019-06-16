@@ -10,9 +10,9 @@ const addProject = project => ({type: CREATE_PROJECT, project})
 const chooseProject = id => ({type: SELECT_PROJECT, id})
 const removeProject = id => ({type: DELETE_PROJECT, id})
 
-export const getProjects = userId => async dispatch => {
+export const getProjects = () => async dispatch => {
   try {
-    const {data} = await axios.get('/api/projects', userId)
+    const {data} = await axios.get('/api/projects')
     dispatch(gettingProjects(data))
   } catch (error) {
     console.error(error)
@@ -42,27 +42,25 @@ export const deleteProject = id => async dispatch => {
 }
 
 const initialState = {
-  projects: [],
+  all: [],
   selectedProject: {}
 }
 
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_PROJECTS:
-      return {...state, projects: action.projects}
+      return {...state, all: action.projects}
     case CREATE_PROJECT:
-      return {...state, projects: [...state.projects, action.project]}
+      return {...state, all: [...state.all, action.project]}
     case SELECT_PROJECT:
       return {
         ...state,
-        selectedProject: state.projects.filter(
-          project => project.id === action.id
-        )
+        selectedProject: state.all.filter(project => project.id === action.id)
       }
     case DELETE_PROJECT:
       return {
         ...state,
-        projects: state.projects.filter(project => project.id !== action.id)
+        all: state.all.filter(project => project.id !== action.id)
       }
     default:
       return state
