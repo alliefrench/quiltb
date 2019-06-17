@@ -27,6 +27,7 @@ export const updateBlockColor = id => dispatch => {
 }
 
 export const saveGrid = (grid, projectId) => async dispatch => {
+  console.log('in thunk', grid, projectId)
   const saveGrid = {square: JSON.stringify(grid), projectId}
   const {data} = await axios.post('api/blocks', saveGrid)
   dispatch(savingGrid(data))

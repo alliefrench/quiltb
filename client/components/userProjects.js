@@ -20,9 +20,10 @@ class UserProjects extends React.Component {
           key={project.id}
           onClick={() => this.props.chooseProject(project.id)}
         >
-          {project.squares.length > 0 && (
-            <Thumbnail square={project.squares[0]} />
-          )}
+          {project.squares &&
+            project.squares.length > 0 && (
+              <Thumbnail square={project.squares[0]} />
+            )}
 
           <Link to={`/design/${project.id}`}>{project.name}</Link>
         </div>

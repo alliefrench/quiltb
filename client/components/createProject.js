@@ -1,10 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {createProject, selectProject} from './store/projects'
+import {createProject, getProjects, selectProject} from '../store/projects'
 
 class ProjectForm extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       name: ''
     }
@@ -22,6 +22,7 @@ class ProjectForm extends React.Component {
     const project = {name: this.state.name, userId: this.props.userId}
     evt.preventDefault()
     this.props.addProject(project)
+    this.props.fetchProjects()
   }
 
   render() {
@@ -44,13 +45,16 @@ class ProjectForm extends React.Component {
 
 const mapState = state => {
   return {
-    userId: state.user.id
+    userId: state.user.id,
+    projects: state.projects.all,
+    selectedProject: state.projects.selectedProject
   }
 }
 
 const mapDispatch = dispatch => {
   return {
     addProject: project => dispatch(createProject(project)),
+    fetchProjects: () => dispatch(getProjects()),
     chooseProject: id => dispatch(selectProject(id))
   }
 }

@@ -2,13 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import UserProjects from './userProjects'
-import {AddProjectForm} from '../createProject'
+import {AddProjectForm} from './createProject'
+import {createBrowserHistory} from 'history'
 
 /**
  * COMPONENT
  */
 export const UserHome = props => {
   const {email} = props
+  const history = createBrowserHistory()
 
   return (
     <div>

@@ -19,6 +19,10 @@ export const getProjects = () => async dispatch => {
   }
 }
 
+export const selectProject = id => dispatch => {
+  dispatch(chooseProject(id))
+}
+
 export const createProject = project => async dispatch => {
   try {
     const {data} = await axios.post('/api/projects', project)
@@ -26,10 +30,6 @@ export const createProject = project => async dispatch => {
   } catch (error) {
     console.error(error)
   }
-}
-
-export const selectProject = id => dispatch => {
-  dispatch(chooseProject(id))
 }
 
 export const deleteProject = id => async dispatch => {

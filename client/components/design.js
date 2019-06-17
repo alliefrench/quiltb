@@ -17,6 +17,8 @@ class Design extends React.Component {
     this.checkSelectedSquare = this.checkSelectedSquare.bind(this)
   }
 
+  componentDidMount() {}
+
   savedGrids() {
     return this.props.grids.length > 0
   }
@@ -56,6 +58,7 @@ class Design extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    selectedProject: state.projects.selectedProject,
     grids: state.blocks.grids,
     selectedGrid: state.blocks.selectedGrid
   }
