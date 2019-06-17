@@ -1,5 +1,6 @@
 /* eslint-disable default-case */
 import {createTriangleBlocks} from '../components/utils/blockGenerator'
+import axios from 'axios'
 
 const SET_COLOR = 'SET_COLOR'
 const UPDATE_BUILDING_GRID = 'UPDATE_BUILDING_GRID'
@@ -11,7 +12,7 @@ const RESET_BUILDING_GRID = 'RESET_BUILDING_GRID'
 
 const setColor = hex => ({type: SET_COLOR, hex})
 const changeBlockColor = id => ({type: UPDATE_BUILDING_GRID, id})
-const savingGrid = id => ({type: SAVE_GRID, id})
+const savingGrid = grid => ({type: SAVE_GRID, grid})
 const chooseGrid = idx => ({type: SELECT_GRID, idx})
 const resettingGrid = () => ({type: RESET_BUILDING_GRID})
 const editingGrid = idx => ({type: EDIT_GRID, idx})
@@ -25,8 +26,10 @@ export const updateBlockColor = id => dispatch => {
   dispatch(changeBlockColor(id))
 }
 
-export const saveGrid = () => dispatch => {
-  dispatch(savingGrid())
+export const saveGrid = (grid, projectId) => async dispatch => {
+  const saveGrid = {square: JSON.stringify(grid), projectId}
+  const {data} = await axios.post('api/blocks', saveGrid)
+  dispatch(savingGrid(data))
 }
 
 export const selectGrid = idx => dispatch => {
@@ -70,7 +73,7 @@ export default function(state = initialState, action) {
         })
       }
     case SAVE_GRID:
-      return {...state, grids: [...state.grids, state.buildingGrid]}
+      return {...state, grids: [...state.grids, action.grid]}
     case SELECT_GRID:
       return {...state, selectedGrid: state.grids[action.idx]}
     case RESET_BUILDING_GRID:

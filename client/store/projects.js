@@ -19,9 +19,9 @@ export const getProjects = () => async dispatch => {
   }
 }
 
-export const createProject = (name, userId) => async dispatch => {
+export const createProject = project => async dispatch => {
   try {
-    const {data} = await axios.post('/api/projects', {name, userId})
+    const {data} = await axios.post('/api/projects', project)
     dispatch(addProject(data))
   } catch (error) {
     console.error(error)

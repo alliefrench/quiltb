@@ -24,7 +24,6 @@ const styles = {
 
 function NavBar(props) {
   const {classes, handleClick, isLoggedIn} = props
-  console.log(props)
   return (
     <div className={classes.root}>
       <AppBar position="static">

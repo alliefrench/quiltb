@@ -2,7 +2,6 @@
 
 const db = require('../server/db')
 const {User, Projects, Squares} = require('../server/db/models')
-// const squarebuilder = require('../client/components/utils/blockGenerator')
 
 const seedSquare = require('./seedSquare')
 

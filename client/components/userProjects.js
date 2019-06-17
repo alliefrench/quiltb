@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {getProjects, selectProject} from '../store/projects'
 import {Link} from 'react-router-dom'
+import {Thumbnail} from './thumbnail'
 
 class UserProjects extends React.Component {
   constructor() {
@@ -15,7 +16,14 @@ class UserProjects extends React.Component {
   render() {
     return this.props.projects ? (
       this.props.projects.map(project => (
-        <div key={project.id} onClick={this.props.chooseProject(project.id)}>
+        <div
+          key={project.id}
+          onClick={() => this.props.chooseProject(project.id)}
+        >
+          {project.squares.length > 0 && (
+            <Thumbnail square={project.squares[0]} />
+          )}
+
           <Link to={`/design/${project.id}`}>{project.name}</Link>
         </div>
       ))

@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import UserProjects from './userProjects'
+import {AddProjectForm} from '../createProject'
 
 /**
  * COMPONENT
@@ -13,6 +14,7 @@ export const UserHome = props => {
     <div>
       <h3>Welcome, {email}</h3>
       <UserProjects />
+      <AddProjectForm />
     </div>
   )
 }
