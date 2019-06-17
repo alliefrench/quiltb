@@ -28,6 +28,7 @@ class Design extends React.Component {
   }
 
   render() {
+    console.log(this.props.selectedProject)
     return (
       <div className="container">
         <div id="leftRender">
@@ -42,7 +43,10 @@ class Design extends React.Component {
           <div className="dataColumn">
             <div className="thumbnailContainer">
               {!this.savedGrids() && <Instructions />}
-              {this.savedGrids() && <MakeThumbnail />}
+
+              {this.props.selectedProject.squares.length > 0 && (
+                <MakeThumbnail squares={this.props.selectedProject.squares} />
+              )}
             </div>
           </div>
         </div>

@@ -53,9 +53,10 @@ export default function(state = initialState, action) {
     case CREATE_PROJECT:
       return {...state, all: [...state.all, action.project]}
     case SELECT_PROJECT:
+      const selected = state.all.filter(project => project.id === action.id)
       return {
         ...state,
-        selectedProject: state.all.filter(project => project.id === action.id)
+        selectedProject: selected[0]
       }
     case DELETE_PROJECT:
       return {

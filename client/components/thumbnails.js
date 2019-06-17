@@ -7,28 +7,29 @@ import {DeleteGridButton} from './deleteThumbnail'
 import {EditGridButton} from './editThumbnail'
 import {Thumbnail} from './thumbnail'
 
-class Thumbnails extends React.Component {
-  render() {
-    const thumbnails = this.props.grids
+function Thumbnails(props) {
+  let {squares} = props
+  console.log(squares)
+  squares = squares.map(square => blockShrinker(square.square))
 
-    return (
-      <div className="thumbnailContainer">
-        {thumbnails.map((thumbnail, index) => (
-          <div>
-            <Thumbnail square={thumbnail} />
-            <div className="container">
-              <DeleteGridButton idx={index} />
-              <EditGridButton idx={index} />
-            </div>
+  return (
+    <div className="thumbnailContainer">
+      {squares.map((square, index) => (
+        <div>
+          <Thumbnail square={square} />
+          <div className="container">
+            <DeleteGridButton idx={index} />
+            <EditGridButton idx={index} />
           </div>
-        ))}
-      </div>
-    )
-  }
+        </div>
+      ))}
+    </div>
+  )
 }
 
 const mapStateToProps = state => {
   return {
+    selectedProject: state.projects.selectedProject,
     grids: state.blocks.grids
   }
 }
