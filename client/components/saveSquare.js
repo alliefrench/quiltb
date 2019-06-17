@@ -8,7 +8,7 @@ function SavingGridView(props) {
       className="paletteBtn"
       id="saveGrid"
       onClick={() => {
-        props.saveGrid()
+        props.saveGrid(props.buildingGrid, props.projectId)
       }}
     >
       Save
@@ -16,10 +16,17 @@ function SavingGridView(props) {
   )
 }
 
-const mapDispatch = dispatch => {
+const mapState = state => {
   return {
-    saveGrid: () => dispatch(saveGrid())
+    buildingGrid: state.blocks.buildingGrid,
+    projectId: state.projects.selectedProject.id
   }
 }
 
-export const SaveGrid = connect(null, mapDispatch)(SavingGridView)
+const mapDispatch = dispatch => {
+  return {
+    saveGrid: (grid, projectId) => dispatch(saveGrid(grid, projectId))
+  }
+}
+
+export const SaveGrid = connect(mapState, mapDispatch)(SavingGridView)

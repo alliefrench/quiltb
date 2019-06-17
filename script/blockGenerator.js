@@ -12,8 +12,12 @@ function createBlocks() {
   }
   return blocks
 }
+// previous output array of 16:
+// {id: 0, x: 0, y: 0, color: "#D9D7D8"}
 
-export const createTriangleBlocks = () => {
+// console.log(createBlocks()[5])
+
+const createTriangleBlocks = () => {
   const triangleBlocks = []
   const blocksArr = createBlocks() // 16 blocks
   const points = [
@@ -25,13 +29,17 @@ export const createTriangleBlocks = () => {
   blocksArr.forEach(block => {
     points.forEach((point, index) => {
       triangleBlocks.push({
+        // ...block,
         x: block.x,
         y: block.y,
         points: [point],
         id: block['blockId'] + index,
         fill: '#d2d4d8'
+        // toggle: false
       })
     })
   })
   return triangleBlocks
 }
+
+module.exports = createTriangleBlocks
