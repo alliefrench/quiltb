@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-key */
 import React from 'react'
-import blockShrinker from './utils/blockShrinker'
 import {connect} from 'react-redux'
 import {selectGrid} from '../store/blocks'
 import {DeleteGridButton} from './deleteThumbnail'
@@ -9,8 +8,6 @@ import {Thumbnail} from './thumbnail'
 
 function Thumbnails(props) {
   let {squares} = props
-  console.log(squares)
-  squares = squares.map(square => blockShrinker(square.square))
 
   return (
     <div className="thumbnailContainer">
