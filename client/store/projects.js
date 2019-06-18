@@ -1,4 +1,5 @@
 import axios from 'axios'
+import parser from '../components/utils/parser'
 
 const GET_PROJECTS = 'GET_PROJECTS'
 const CREATE_PROJECT = 'CREATE_PROJECT'

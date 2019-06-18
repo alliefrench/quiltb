@@ -54,8 +54,7 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     addProject: project => dispatch(createProject(project)),
-    fetchProjects: () => dispatch(getProjects()),
-    chooseProject: id => dispatch(selectProject(id))
+    fetchProjects: () => dispatch(getProjects())
   }
 }
 

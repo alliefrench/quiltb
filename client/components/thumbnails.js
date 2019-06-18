@@ -12,7 +12,7 @@ function Thumbnails(props) {
   return (
     <div className="thumbnailContainer">
       {squares.map((square, index) => (
-        <div>
+        <div key={square.id}>
           <Thumbnail square={square} />
           <div className="container">
             <DeleteGridButton idx={index} />

@@ -14,7 +14,6 @@ class Design extends React.Component {
     super()
     this.state = {}
     this.savedGrids = this.savedGrids.bind(this)
-    this.checkSelectedSquare = this.checkSelectedSquare.bind(this)
   }
 
   componentDidMount() {}
@@ -23,12 +22,7 @@ class Design extends React.Component {
     return this.props.grids.length > 0
   }
 
-  checkSelectedSquare() {
-    return this.props.selectedGrid.length > 0
-  }
-
   render() {
-    console.log(this.props.selectedProject)
     return (
       <div className="container">
         <div id="leftRender">
@@ -53,7 +47,7 @@ class Design extends React.Component {
 
         <div id="blockRender">
           <GenerateBlanket />
-          {this.checkSelectedSquare() && <StatsCard />}
+          <StatsCard />
         </div>
       </div>
     )

@@ -86,9 +86,9 @@ const mapDispatch = dispatch => {
 const ButtonAppBar = connect(mapState, mapDispatch)(NavBar)
 
 ButtonAppBar.propTypes = {
-  classes: PropTypes.object.isRequired,
-  handleClick: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+  classes: PropTypes.object.isRequired
+  // handleClick: PropTypes.func.isRequired,
+  // isLoggedIn: PropTypes.bool.isRequired
 }
 
 export default withStyles(styles)(ButtonAppBar)

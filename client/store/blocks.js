@@ -55,7 +55,7 @@ const initialState = {
   currentColor: '#F9AA33',
   buildingGrid: initialGrid,
   grids: [],
-  selectedGrid: initialGrid
+  selectedGrid: {id: 0, square: initialGrid}
 }
 
 export default function(state = initialState, action) {

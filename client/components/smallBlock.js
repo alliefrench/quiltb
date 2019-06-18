@@ -6,7 +6,7 @@ import {createTriangleBlocks} from './utils/blockGenerator'
 
 class Block extends React.Component {
   render() {
-    const tinyBlock = blockShrinker(this.props.selectedGrid)
+    const tinyBlock = blockShrinker(this.props.selectedGrid.square)
 
     return (
       <Stage width={100} height={100} fill="#D9D7D8">

@@ -3,12 +3,13 @@ import React from 'react'
 import {Stage, Layer, Line} from 'react-konva'
 import {selectGrid} from '../store/blocks'
 import blockShrinker from './utils/blockShrinker'
+import {connect} from 'react-redux'
+import parser from './utils/parser'
 
-export function Thumbnail(props) {
+function DisconnectedThumbnail(props) {
   const {square} = props
-  const block = JSON.parse(square.square)
+  const block = parser(square.square)
   const tinyBlock = blockShrinker(block)
-  console.log('block', tinyBlock)
 
   return (
     <div>
@@ -23,6 +24,7 @@ export function Thumbnail(props) {
                 points={triangle.points}
                 closed
                 fill={triangle.fill}
+                onClick={() => props.chooseGrid(square.id)}
               />
             ))}
           </Layer>
@@ -31,3 +33,11 @@ export function Thumbnail(props) {
     </div>
   )
 }
+
+const mapDispatch = dispatch => {
+  return {
+    chooseGrid: id => dispatch(selectGrid(id))
+  }
+}
+
+export const Thumbnail = connect(null, mapDispatch)(DisconnectedThumbnail)
