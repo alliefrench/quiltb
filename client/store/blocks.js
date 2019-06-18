@@ -81,7 +81,7 @@ const initialGrid = createTriangleBlocks()
 
 const initialState = {
   currentColor: '#F9AA33',
-  buildingGrid: {id: 0, square: initialGrid},
+  buildingGrid: {id: 0, square: [...initialGrid]},
   grids: [],
   selectedGrid: {id: 0, square: initialGrid}
 }
@@ -128,7 +128,7 @@ export default function(state = initialState, action) {
         grids: remainingGrids
       }
     case RESET_GRIDS:
-      return {...state, grids: []}
+      return initialState
     default:
       return state
   }

@@ -5,6 +5,7 @@ import {
   totalAreaPerTriangle,
   totalAreaByColor
 } from './utils/areaCalc'
+import parser from './utils/parser'
 
 class Stats extends React.Component {
   constructor() {
@@ -26,7 +27,8 @@ class Stats extends React.Component {
   }
 
   render() {
-    const countByColor = sumByColor(this.props.selectedGrid)
+    const grid = parser(this.props.selectedGrid.square)
+    const countByColor = sumByColor(grid)
     const triangleArea = totalAreaPerTriangle(this.state.width)
     const areaByColor = totalAreaByColor(countByColor, triangleArea)
     const colorKeys = Object.keys(areaByColor)

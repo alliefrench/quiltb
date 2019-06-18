@@ -10,6 +10,7 @@ export const sumByColor = gridArr => {
       totalByColor[triangle['fill']]++
     }
   }
+
   return totalByColor
 }
 
