@@ -13,7 +13,7 @@ function Thumbnails(props) {
         <div key={square.id}>
           <Thumbnail square={square} />
           <div className="container">
-            <DeleteGridButton idx={index} />
+            <DeleteGridButton idx={index} id={square.id} />
             <EditGridButton idx={index} />
           </div>
         </div>

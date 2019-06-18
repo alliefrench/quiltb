@@ -58,7 +58,10 @@ export const editGrid = idx => dispatch => {
   dispatch(editingGrid(idx))
 }
 
-export const deleteGrid = id => dispatch => {
+export const deleteGrid = (isLoggedIn, id) => async dispatch => {
+  if (isLoggedIn) {
+    await axios.delete(`/api/squares`, {data: {id}})
+  }
   dispatch(removeGrid(id))
 }
 
@@ -81,13 +84,16 @@ export default function(state = initialState, action) {
     case UPDATE_BUILDING_GRID:
       return {
         ...state,
-        buildingGrid: state.buildingGrid.map(el => {
-          if (el.id === action.id) {
-            return {...el, fill: state.currentColor}
-          } else {
-            return el
-          }
-        })
+        buildingGrid: {
+          ...state.buildingGrid,
+          square: state.buildingGrid.square.map(el => {
+            if (el.id === action.id) {
+              return {...el, fill: state.currentColor}
+            } else {
+              return el
+            }
+          })
+        }
       }
     case SAVE_GRID:
       return {...state, grids: [...state.grids, action.grid]}
@@ -98,9 +104,7 @@ export default function(state = initialState, action) {
     case EDIT_GRID:
       return {...state, buildingGrid: state.grids[action.idx]}
     case DELETE_GRID:
-      const remainingGrids = state.grids.filter(
-        (grid, idx) => idx !== action.id
-      )
+      const remainingGrids = state.grids.filter(grid => grid.id !== action.id)
       return {
         ...state,
         grids: remainingGrids
