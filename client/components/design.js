@@ -8,27 +8,28 @@ import GenerateBlanket from './altBlanketGenerator'
 import {ResetGrid} from './resetSquare'
 import {StatsCard} from './stats'
 import Instructions from './instructions'
+import {getGrids} from '../store/blocks'
 
 class Design extends React.Component {
   constructor() {
     super()
     this.state = {}
     this.savedGrids = this.savedGrids.bind(this)
-    this.checkSelectedSquare = this.checkSelectedSquare.bind(this)
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.isLoggedIn &&
+      this.props.fetchGrids(
+        this.props.isLoggedIn,
+        this.props.selectedProject.id
+      )
+  }
 
   savedGrids() {
     return this.props.grids.length > 0
   }
 
-  checkSelectedSquare() {
-    return this.props.selectedGrid.length > 0
-  }
-
   render() {
-    console.log(this.props.selectedProject)
     return (
       <div className="container">
         <div id="leftRender">
@@ -44,16 +45,14 @@ class Design extends React.Component {
             <div className="thumbnailContainer">
               {!this.savedGrids() && <Instructions />}
 
-              {this.props.selectedProject.squares.length > 0 && (
-                <MakeThumbnail squares={this.props.selectedProject.squares} />
-              )}
+              {this.props.grids.length > 0 && <MakeThumbnail />}
             </div>
           </div>
         </div>
 
         <div id="blockRender">
           <GenerateBlanket />
-          {this.checkSelectedSquare() && <StatsCard />}
+          <StatsCard />
         </div>
       </div>
     )
@@ -64,12 +63,15 @@ const mapStateToProps = state => {
   return {
     selectedProject: state.projects.selectedProject,
     grids: state.blocks.grids,
-    selectedGrid: state.blocks.selectedGrid
+    selectedGrid: state.blocks.selectedGrid,
+    isLoggedIn: !!state.user.id
   }
 }
 
 const mapDispatch = dispatch => {
   return {
+    fetchGrids: (isLoggedIn, projectId) =>
+      dispatch(getGrids(isLoggedIn, projectId)),
     changeColor: id => dispatch(updateBlockColor(id))
   }
 }

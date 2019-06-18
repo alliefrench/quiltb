@@ -3,23 +3,30 @@ import {connect} from 'react-redux'
 import {deleteGrid} from '../store/blocks'
 
 function DeleteGrid(props) {
+  const identifier = props.id ? props.id : props.idx
+
   return (
     <div
       className="deleteBtn"
       onClick={() => {
-        props.removeGrid(props.idx)
+        props.removeGrid(props.isLoggedIn, identifier)
       }}
     >
-      {' '}
       x
     </div>
   )
 }
 
-const mapDispatch = dispatch => {
+const mapState = state => {
   return {
-    removeGrid: id => dispatch(deleteGrid(id))
+    isLoggedIn: !!state.user.id
   }
 }
 
-export const DeleteGridButton = connect(null, mapDispatch)(DeleteGrid)
+const mapDispatch = dispatch => {
+  return {
+    removeGrid: (isLoggedIn, id) => dispatch(deleteGrid(isLoggedIn, id))
+  }
+}
+
+export const DeleteGridButton = connect(mapState, mapDispatch)(DeleteGrid)

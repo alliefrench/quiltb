@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import SmallBlock from './smallBlock'
+import {Thumbnail} from './thumbnail'
 import ToggleBorders from './toggleBorders'
 
 class Blanket extends React.Component {

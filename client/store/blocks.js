@@ -1,7 +1,9 @@
 /* eslint-disable default-case */
 import {createTriangleBlocks} from '../components/utils/blockGenerator'
+import parser from '../components/utils/parser'
 import axios from 'axios'
 
+const GET_GRIDS = 'GET_GRIDS'
 const SET_COLOR = 'SET_COLOR'
 const UPDATE_BUILDING_GRID = 'UPDATE_BUILDING_GRID'
 const SAVE_GRID = 'SAVE_GRID'
@@ -10,13 +12,25 @@ const DELETE_GRID = 'DELETE_GRID'
 const EDIT_GRID = 'EDIT_GRID'
 const RESET_BUILDING_GRID = 'RESET_BUILDING_GRID'
 
+const gettingGrids = grids => ({type: GET_GRIDS, grids})
 const setColor = hex => ({type: SET_COLOR, hex})
 const changeBlockColor = id => ({type: UPDATE_BUILDING_GRID, id})
 const savingGrid = grid => ({type: SAVE_GRID, grid})
-const chooseGrid = idx => ({type: SELECT_GRID, idx})
+const chooseGrid = grid => ({type: SELECT_GRID, grid})
 const resettingGrid = () => ({type: RESET_BUILDING_GRID})
 const editingGrid = idx => ({type: EDIT_GRID, idx})
 const removeGrid = id => ({type: DELETE_GRID, id})
+
+export const getGrids = (isLoggedIn, projectId) => async dispatch => {
+  try {
+    if (isLoggedIn) {
+      const {data} = await axios.get(`/api/squares/${projectId}`)
+      dispatch(gettingGrids(data))
+    }
+  } catch (error) {
+    console.error(error)
+  }
+}
 
 export const setCurrentColor = hex => dispatch => {
   dispatch(setColor(hex))
@@ -33,8 +47,13 @@ export const saveGrid = (grid, projectId) => async dispatch => {
   dispatch(savingGrid(data))
 }
 
-export const selectGrid = idx => dispatch => {
-  dispatch(chooseGrid(idx))
+export const tempSaveGrid = grid => dispatch => {
+  const temp = {id: null, square: grid}
+  dispatch(savingGrid(temp))
+}
+
+export const selectGrid = grid => dispatch => {
+  dispatch(chooseGrid(grid))
 }
 
 export const resetGrid = () => dispatch => {
@@ -45,7 +64,10 @@ export const editGrid = idx => dispatch => {
   dispatch(editingGrid(idx))
 }
 
-export const deleteGrid = id => dispatch => {
+export const deleteGrid = (isLoggedIn, id) => async dispatch => {
+  if (isLoggedIn) {
+    await axios.delete(`/api/squares`, {data: {id}})
+  }
   dispatch(removeGrid(id))
 }
 
@@ -53,38 +75,48 @@ const initialGrid = createTriangleBlocks()
 
 const initialState = {
   currentColor: '#F9AA33',
-  buildingGrid: initialGrid,
+  buildingGrid: {id: 0, square: initialGrid},
   grids: [],
-  selectedGrid: initialGrid
+  selectedGrid: {id: 0, square: initialGrid}
 }
 
+// eslint-disable-next-line complexity
 export default function(state = initialState, action) {
   switch (action.type) {
+    case GET_GRIDS:
+      return {...state, grids: action.grids}
     case SET_COLOR:
       return {...state, currentColor: action.hex}
     case UPDATE_BUILDING_GRID:
       return {
         ...state,
-        buildingGrid: state.buildingGrid.map(el => {
-          if (el.id === action.id) {
-            return {...el, fill: state.currentColor}
-          } else {
-            return el
-          }
-        })
+        buildingGrid: {
+          ...state.buildingGrid,
+          square: state.buildingGrid.square.map(el => {
+            if (el.id === action.id) {
+              return {...el, fill: state.currentColor}
+            } else {
+              return el
+            }
+          })
+        }
       }
     case SAVE_GRID:
       return {...state, grids: [...state.grids, action.grid]}
     case SELECT_GRID:
-      return {...state, selectedGrid: state.grids[action.idx]}
+      return {...state, selectedGrid: action.grid}
     case RESET_BUILDING_GRID:
       return {...state, buildingGrid: initialState.buildingGrid}
     case EDIT_GRID:
-      return {...state, buildingGrid: state.grids[action.idx]}
+      return {
+        ...state,
+        buildingGrid: {
+          ...state.buildingGrid,
+          square: parser(state.grids[action.idx].square)
+        }
+      }
     case DELETE_GRID:
-      const remainingGrids = state.grids.filter(
-        (grid, idx) => idx !== action.id
-      )
+      const remainingGrids = state.grids.filter(grid => grid.id !== action.id)
       return {
         ...state,
         grids: remainingGrids
