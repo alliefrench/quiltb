@@ -11,6 +11,7 @@ const SELECT_GRID = 'SELECT_GRID'
 const DELETE_GRID = 'DELETE_GRID'
 const EDIT_GRID = 'EDIT_GRID'
 const RESET_BUILDING_GRID = 'RESET_BUILDING_GRID'
+const RESET_GRIDS = 'RESET_GRIDS'
 
 const gettingGrids = grids => ({type: GET_GRIDS, grids})
 const setColor = hex => ({type: SET_COLOR, hex})
@@ -20,6 +21,7 @@ const chooseGrid = grid => ({type: SELECT_GRID, grid})
 const resettingGrid = () => ({type: RESET_BUILDING_GRID})
 const editingGrid = idx => ({type: EDIT_GRID, idx})
 const removeGrid = id => ({type: DELETE_GRID, id})
+const resettingGrids = () => ({type: RESET_GRIDS})
 
 export const getGrids = (isLoggedIn, projectId) => async dispatch => {
   try {
@@ -69,6 +71,10 @@ export const deleteGrid = (isLoggedIn, id) => async dispatch => {
     await axios.delete(`/api/squares`, {data: {id}})
   }
   dispatch(removeGrid(id))
+}
+
+export const resetGrids = () => dispatch => {
+  dispatch(resettingGrids())
 }
 
 const initialGrid = createTriangleBlocks()
@@ -121,6 +127,8 @@ export default function(state = initialState, action) {
         ...state,
         grids: remainingGrids
       }
+    case RESET_GRIDS:
+      return {...state, grids: []}
     default:
       return state
   }
