@@ -24,7 +24,7 @@ function DisconnectedThumbnail(props) {
                 points={triangle.points}
                 closed
                 fill={triangle.fill}
-                onClick={() => props.chooseGrid(square.id)}
+                onClick={() => props.chooseGrid(square)}
               />
             ))}
           </Layer>

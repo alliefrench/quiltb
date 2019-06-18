@@ -1,7 +1,9 @@
 import axios from 'axios'
 import parser from '../components/utils/parser'
+import {runInNewContext} from 'vm'
 
 const GET_PROJECTS = 'GET_PROJECTS'
+const GET_PROJECT = 'GET_PROJECT'
 const CREATE_PROJECT = 'CREATE_PROJECT'
 const SELECT_PROJECT = 'SELECT_PROJECT'
 const DELETE_PROJECT = 'DELETE_PROJECT'
@@ -15,6 +17,15 @@ export const getProjects = () => async dispatch => {
   try {
     const {data} = await axios.get('/api/projects')
     dispatch(gettingProjects(data))
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const getProject = id => async dispatch => {
+  try {
+    const {data} = await axios.get(`/api/projects/${id}`)
+    dispatch(chooseProject(data))
   } catch (error) {
     console.error(error)
   }

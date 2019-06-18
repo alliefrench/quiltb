@@ -8,6 +8,7 @@ import GenerateBlanket from './altBlanketGenerator'
 import {ResetGrid} from './resetSquare'
 import {StatsCard} from './stats'
 import Instructions from './instructions'
+import {getGrids} from '../store/blocks'
 
 class Design extends React.Component {
   constructor() {
@@ -16,7 +17,9 @@ class Design extends React.Component {
     this.savedGrids = this.savedGrids.bind(this)
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.fetchGrids(this.props.isLoggedIn, this.props.selectedProject.id)
+  }
 
   savedGrids() {
     return this.props.grids.length > 0
@@ -39,7 +42,7 @@ class Design extends React.Component {
               {!this.savedGrids() && <Instructions />}
 
               {this.props.selectedProject.squares.length > 0 && (
-                <MakeThumbnail squares={this.props.selectedProject.squares} />
+                <MakeThumbnail />
               )}
             </div>
           </div>
@@ -58,12 +61,15 @@ const mapStateToProps = state => {
   return {
     selectedProject: state.projects.selectedProject,
     grids: state.blocks.grids,
-    selectedGrid: state.blocks.selectedGrid
+    selectedGrid: state.blocks.selectedGrid,
+    isLoggedIn: !!state.user.id
   }
 }
 
 const mapDispatch = dispatch => {
   return {
+    fetchGrids: (isLoggedIn, projectId) =>
+      dispatch(getGrids(isLoggedIn, projectId)),
     changeColor: id => dispatch(updateBlockColor(id))
   }
 }

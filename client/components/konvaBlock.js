@@ -3,13 +3,16 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Stage, Layer, Line} from 'react-konva'
 import {updateBlockColor} from '../store/blocks'
+import parser from './utils/parser'
 
 function DesignBlock(props) {
+  const bigSquare = parser(props.blocks.square)
+
   return (
     <div id="bigSquare">
       <Stage width={400} height={400} fill="#D9D7D8">
         <Layer>
-          {props.blocks.map(triangle => (
+          {bigSquare.map(triangle => (
             <Line
               key={triangle.id}
               x={triangle.x}
