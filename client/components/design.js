@@ -18,7 +18,11 @@ class Design extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchGrids(this.props.isLoggedIn, this.props.selectedProject.id)
+    this.props.isLoggedIn &&
+      this.props.fetchGrids(
+        this.props.isLoggedIn,
+        this.props.selectedProject.id
+      )
   }
 
   savedGrids() {
@@ -41,9 +45,7 @@ class Design extends React.Component {
             <div className="thumbnailContainer">
               {!this.savedGrids() && <Instructions />}
 
-              {this.props.selectedProject.squares.length > 0 && (
-                <MakeThumbnail />
-              )}
+              {this.props.grids.length > 0 && <MakeThumbnail />}
             </div>
           </div>
         </div>

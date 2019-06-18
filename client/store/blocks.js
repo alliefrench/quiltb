@@ -47,6 +47,11 @@ export const saveGrid = (grid, projectId) => async dispatch => {
   dispatch(savingGrid(data))
 }
 
+export const tempSaveGrid = grid => dispatch => {
+  const temp = {id: null, square: grid}
+  dispatch(savingGrid(temp))
+}
+
 export const selectGrid = grid => dispatch => {
   dispatch(chooseGrid(grid))
 }
