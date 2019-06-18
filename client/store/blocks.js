@@ -83,7 +83,7 @@ const initialState = {
   currentColor: '#F9AA33',
   buildingGrid: {id: 0, square: [...initialGrid]},
   grids: [],
-  selectedGrid: {id: 0, square: initialGrid}
+  selectedGrid: {id: 0, square: [...initialGrid]}
 }
 
 // eslint-disable-next-line complexity
