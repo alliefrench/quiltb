@@ -37,8 +37,8 @@ class Design extends React.Component {
             <Palettes />
             <KonvaBlock />
             <div id="save">
-              <SaveGrid />
               <ResetGrid />
+              <SaveGrid />
             </div>
           </div>
           <div className="dataColumn">

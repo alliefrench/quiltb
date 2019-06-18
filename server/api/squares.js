@@ -24,7 +24,7 @@ router.post('/', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
-    const square = await Squares.Update(
+    const square = await Squares.update(
       {
         square: req.body.square
       },

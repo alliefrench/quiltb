@@ -1,19 +1,32 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {saveGrid, tempSaveGrid} from '../store/blocks'
+import {saveGrid, tempSaveGrid, updateGrid} from '../store/blocks'
 
 function SavingGridView(props) {
-  const save = props.isLoggedIn ? props.saveGrid : props.temporarySave
+  const saveNew = props.isLoggedIn ? props.saveGrid : props.temporarySave
 
   return (
-    <div
-      className="paletteBtn"
-      id="saveGrid"
-      onClick={() => {
-        save(props.buildingGrid.square, props.projectId)
-      }}
-    >
-      Save
+    <div>
+      <div
+        className="paletteBtn"
+        id="saveGridAsNew"
+        onClick={() => {
+          saveNew(props.buildingGrid.square, props.projectId)
+        }}
+      >
+        Save New
+      </div>
+      {props.buildingGrid.id !== null && (
+        <div
+          className="paletteBtn"
+          id="saveGrid"
+          onClick={() => {
+            props.saveChanges(props.buildingGrid)
+          }}
+        >
+          Save
+        </div>
+      )}
     </div>
   )
 }
@@ -29,7 +42,8 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     saveGrid: (grid, projectId) => dispatch(saveGrid(grid, projectId)),
-    temporarySave: grid => dispatch(tempSaveGrid(grid))
+    temporarySave: grid => dispatch(tempSaveGrid(grid)),
+    saveChanges: grid => dispatch(updateGrid(grid))
   }
 }
 

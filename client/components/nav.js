@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import {resetGrids} from '../store/blocks'
 
 const styles = {
   root: {
@@ -78,6 +79,7 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     handleClick() {
+      dispatch(resetGrids())
       dispatch(logout())
     }
   }
