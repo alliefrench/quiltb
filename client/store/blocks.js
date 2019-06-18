@@ -7,6 +7,7 @@ const GET_GRIDS = 'GET_GRIDS'
 const SET_COLOR = 'SET_COLOR'
 const UPDATE_BUILDING_GRID = 'UPDATE_BUILDING_GRID'
 const SAVE_GRID = 'SAVE_GRID'
+const UPDATE_GRID = 'UPDATE_GRID'
 const SELECT_GRID = 'SELECT_GRID'
 const DELETE_GRID = 'DELETE_GRID'
 const EDIT_GRID = 'EDIT_GRID'
@@ -17,6 +18,7 @@ const gettingGrids = grids => ({type: GET_GRIDS, grids})
 const setColor = hex => ({type: SET_COLOR, hex})
 const changeBlockColor = id => ({type: UPDATE_BUILDING_GRID, id})
 const savingGrid = grid => ({type: SAVE_GRID, grid})
+const updatingGrid = grid => ({type: UPDATE_GRID, grid})
 const chooseGrid = grid => ({type: SELECT_GRID, grid})
 const resettingGrid = () => ({type: RESET_BUILDING_GRID})
 const editingGrid = idx => ({type: EDIT_GRID, idx})
@@ -42,13 +44,29 @@ export const updateBlockColor = id => dispatch => {
   dispatch(changeBlockColor(id))
 }
 
+// for logged-in users
 export const saveGrid = (grid, projectId) => async dispatch => {
-  const currGrid = {square: JSON.stringify(grid), projectId}
-  console.log('currGrid', currGrid)
-  const {data} = await axios.post('/api/squares', currGrid)
-  dispatch(savingGrid(data))
+  try {
+    const currGrid = {square: JSON.stringify(grid), projectId}
+    const {data} = await axios.post('/api/squares', currGrid)
+    dispatch(savingGrid(data))
+  } catch (error) {
+    console.error(error)
+  }
 }
 
+export const updateGrid = grid => async dispatch => {
+  try {
+    const currGrid = {square: JSON.stringify(grid.square)}
+    const {data} = await axios.put(`/api/squares/${grid.id}`, currGrid)
+    console.log('DATA', data)
+    dispatch(updatingGrid(data[1][0]))
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+//for guests
 export const tempSaveGrid = grid => dispatch => {
   const temp = {id: null, square: grid}
   dispatch(savingGrid(temp))
@@ -81,9 +99,9 @@ const initialGrid = createTriangleBlocks()
 
 const initialState = {
   currentColor: '#F9AA33',
-  buildingGrid: {id: 0, square: [...initialGrid]},
+  buildingGrid: {id: null, square: [...initialGrid]},
   grids: [],
-  selectedGrid: {id: 0, square: [...initialGrid]}
+  selectedGrid: {id: null, square: [...initialGrid]}
 }
 
 // eslint-disable-next-line complexity
@@ -109,6 +127,14 @@ export default function(state = initialState, action) {
       }
     case SAVE_GRID:
       return {...state, grids: [...state.grids, action.grid]}
+    case UPDATE_GRID:
+      return {
+        ...state,
+        grids: [
+          ...state.grids.filter(grid => grid.id !== action.grid.id),
+          action.grid
+        ]
+      }
     case SELECT_GRID:
       return {...state, selectedGrid: action.grid}
     case RESET_BUILDING_GRID:
@@ -117,7 +143,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         buildingGrid: {
-          ...state.buildingGrid,
+          id: state.grids[action.idx].id,
           square: parser(state.grids[action.idx].square)
         }
       }
