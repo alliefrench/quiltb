@@ -8,7 +8,7 @@ function SavingGridView(props) {
       className="paletteBtn"
       id="saveGrid"
       onClick={() => {
-        props.saveGrid(props.buildingGrid, props.projectId)
+        props.saveGrid(props.buildingGrid.square, props.projectId)
       }}
     >
       Save

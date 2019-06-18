@@ -1,5 +1,6 @@
 /* eslint-disable default-case */
 import {createTriangleBlocks} from '../components/utils/blockGenerator'
+import parser from '../components/utils/parser'
 import axios from 'axios'
 
 const GET_GRIDS = 'GET_GRIDS'
@@ -102,7 +103,13 @@ export default function(state = initialState, action) {
     case RESET_BUILDING_GRID:
       return {...state, buildingGrid: initialState.buildingGrid}
     case EDIT_GRID:
-      return {...state, buildingGrid: state.grids[action.idx]}
+      return {
+        ...state,
+        buildingGrid: {
+          ...state.buildingGrid,
+          square: parser(state.grids[action.idx].square)
+        }
+      }
     case DELETE_GRID:
       const remainingGrids = state.grids.filter(grid => grid.id !== action.id)
       return {
