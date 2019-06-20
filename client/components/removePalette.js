@@ -1,10 +1,10 @@
 import React from 'react'
 
 function RemoveButton(props) {
-  const id = props.elId
+  const idx = props.idx
   return (
-    <div className="paletteBtn" onClick={() => props.removePalette(id)}>
-      remove
+    <div className="deleteBtn" onClick={() => props.removeColor(idx)}>
+      x
     </div>
   )
 }

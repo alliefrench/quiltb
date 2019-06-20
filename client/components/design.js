@@ -1,5 +1,5 @@
 import React from 'react'
-import Palettes from './palettes'
+import Palettes from './palettes.1'
 import {KonvaBlock} from './konvaBlock'
 import {SaveGrid} from './saveSquare'
 import MakeThumbnail from './thumbnails'

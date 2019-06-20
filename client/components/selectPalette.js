@@ -2,7 +2,10 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {setCurrentColor} from '../store/blocks'
 
-function SelectPalette(props) {
+// UPDATE COMPONENENT TO ADD COLOR BUTTON WITH HEX LABEL AND
+// AUTOMATICALLY MAKE IT THE CURRENT COLOR
+
+function AddColor(props) {
   return (
     <div>
       <div
@@ -10,10 +13,11 @@ function SelectPalette(props) {
         id="selectColor"
         onClick={() => {
           props.setCurrColor(props.color)
+          props.addColor(props.color)
         }}
-        style={{backgroundColor: props.color}}
+        // style={{backgroundColor: props.color}}
       >
-        select
+        add
       </div>
     </div>
   )
@@ -31,4 +35,4 @@ const mapDispatch = dispatch => {
   }
 }
 
-export const ColorSelect = connect(mapState, mapDispatch)(SelectPalette)
+export const ColorSelect = connect(mapState, mapDispatch)(AddColor)
