@@ -2,9 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {setCurrentColor} from '../store/blocks'
 
-// UPDATE COMPONENENT TO ADD COLOR BUTTON WITH HEX LABEL AND
-// AUTOMATICALLY MAKE IT THE CURRENT COLOR
-
 function AddColor(props) {
   return (
     <div>
