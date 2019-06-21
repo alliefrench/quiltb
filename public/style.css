@@ -84,6 +84,9 @@ body form div {
   width: 30px;
   height: 30px;
   margin-bottom: 10px;
+  border: 2px;
+  border-color: #808080;
+  border-style: solid;
 }
 
 span {
