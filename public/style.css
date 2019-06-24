@@ -63,8 +63,12 @@ body form div {
 
 #paletteGrid {
   display: flex;
-  flex-direction: column;
-  height: 150px;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 10px;
+  height: 100px;
   overflow-y: scroll;
 }
 
@@ -74,6 +78,15 @@ body form div {
   align-content: center;
   align-items: center;
   margin-left: 20px;
+}
+
+.colorButton {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 10px;
+  border: 2px;
+  border-color: #808080;
+  border-style: solid;
 }
 
 span {
@@ -136,6 +149,7 @@ span {
 .deleteBtn {
   background-color: #808080;
   color: white;
+  margin: 5px;
   font-size: 12px;
   border-radius: 5px;
   text-align: center;

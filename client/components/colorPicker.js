@@ -1,8 +1,8 @@
 import React from 'react'
 import InputColor from 'react-input-color'
-import {ColorSelect} from './selectPalette'
+import {ColorSelect} from './addColor.js'
 
-function ColorPicker() {
+function ColorPicker(props) {
   const [color, setColor] = React.useState({})
 
   return (
@@ -12,7 +12,7 @@ function ColorPicker() {
         onChange={setColor}
         placement="right"
       />
-      <ColorSelect color={color.hex} />
+      <ColorSelect color={color.hex} addColor={props.addColor} />
     </div>
   )
 }

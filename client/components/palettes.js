@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import ColorPicker from './colorPicker'
-import AddPalette from './addPalette'
 import RemoveButton from './removePalette'
 import {setCurrentColor} from '../store/blocks'
 
@@ -9,21 +8,20 @@ class PalettesView extends React.Component {
   constructor() {
     super()
     this.state = {
-      palettes: [{id: 0}]
+      colors: ['#F9AA33', '#32aafa', '#216897']
     }
-    this.addPalette = this.addPalette.bind(this)
-    this.removePalette = this.removePalette.bind(this)
+    this.addColor = this.addColor.bind(this)
+    this.removeColor = this.removeColor.bind(this)
   }
 
-  addPalette() {
-    const palArr = this.state.palettes
-    const newId = palArr.length ? palArr[palArr.length - 1].id + 1 : 0
-    this.setState({palettes: [...palArr, {id: newId}]})
+  addColor(color) {
+    const colorArr = this.state.colors
+    this.setState({colors: [...colorArr, color]})
   }
 
-  removePalette(id) {
+  removeColor(idx) {
     this.setState({
-      palettes: this.state.palettes.filter(el => el.id !== id)
+      colors: this.state.colors.filter((el, index) => index !== idx)
     })
   }
 
@@ -31,16 +29,20 @@ class PalettesView extends React.Component {
     const currentColor = this.props.currentColor
     return (
       <div className="colorTools">
+        <ColorPicker addColor={this.addColor} />
         <div id="currentColor" style={{backgroundColor: currentColor}}>
           current color - select below to change
         </div>
         <div className="container">
-          <AddPalette addPalette={this.addPalette} />
           <div id="paletteGrid">
-            {this.state.palettes.map(el => (
-              <div key={el.id} className="singlePalette">
-                <ColorPicker />
-                <RemoveButton removePalette={this.removePalette} elId={el.id} />
+            {this.state.colors.map((color, index) => (
+              <div key={index} className="singlePalette">
+                <div
+                  className="colorButton"
+                  style={{backgroundColor: color}}
+                  onClick={() => this.props.setCurrColor(color)}
+                />
+                <RemoveButton removeColor={this.removeColor} idx={index} />
               </div>
             ))}
           </div>
@@ -55,6 +57,12 @@ const mapState = state => {
   }
 }
 
-export const Palettes = connect(mapState, null)(PalettesView)
+const mapDispatch = dispatch => {
+  return {
+    setCurrColor: hex => dispatch(setCurrentColor(hex))
+  }
+}
+
+export const Palettes = connect(mapState, mapDispatch)(PalettesView)
 
 export default Palettes
