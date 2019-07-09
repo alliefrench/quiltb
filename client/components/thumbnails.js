@@ -12,7 +12,7 @@ function Thumbnails(props) {
       {props.grids.map((square, index) => (
         <div key={square.id}>
           <Thumbnail square={square} />
-          <div className="container">
+          <div className="thumbnailBtnsDiv">
             <DeleteGridButton idx={index} id={square.id} />
             <EditGridButton idx={index} />
           </div>
