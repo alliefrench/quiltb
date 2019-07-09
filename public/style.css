@@ -129,9 +129,7 @@ span {
 }
 
 .instructions {
-  background-color: #808080;
-  color: white;
-  box-shadow: 3px 3px 5px grey;
+  color: #808080;
   padding: 5px;
 }
 
@@ -152,6 +150,13 @@ span {
   box-shadow: 3px 3px 5px grey;
   width: 100px;
   height: 100px;
+}
+
+.thumbnailBtnsDiv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .deleteBtn {

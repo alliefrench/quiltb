@@ -3,13 +3,15 @@ import React from 'react'
 function Instructions() {
   return (
     <div className="instructions">
-      <div>Time to design.</div>
+      <div>It's time to design your squares!</div>
       <br />
-      <div>1 - add colors to your palette</div>
+      <div>- Add colors to your palette</div>
       <br />
-      <div>2 - fill in the grid and save your square</div>
+      <div>- Fill in the grid </div>
       <br />
-      <div>3 - click on the grid to see it mapped out as a blanket</div>
+      <div>- Save your square</div>
+      <br />
+      <div>- Click on the thumbnail to see it mapped out as a blanket</div>
     </div>
   )
 }

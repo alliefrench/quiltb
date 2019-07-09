@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {getProjects, selectProject} from '../store/projects'
+import {resetGrids} from '../store/blocks'
 import {Link} from 'react-router-dom'
 import {Thumbnail} from './thumbnail'
 
@@ -18,7 +19,10 @@ class UserProjects extends React.Component {
       this.props.projects.map(project => (
         <div
           key={project.id}
-          onClick={() => this.props.chooseProject(project.id)}
+          onClick={() => {
+            this.props.chooseProject(project.id)
+            this.props.resettingGrids()
+          }}
         >
           {project.squares &&
             project.squares.length > 0 && (
@@ -44,7 +48,8 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     loadProjects: id => dispatch(getProjects(id)),
-    chooseProject: id => dispatch(selectProject(id))
+    chooseProject: id => dispatch(selectProject(id)),
+    resettingGrids: () => dispatch(resetGrids())
   }
 }
 
