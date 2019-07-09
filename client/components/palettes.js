@@ -30,9 +30,7 @@ class PalettesView extends React.Component {
     return (
       <div className="colorTools">
         <ColorPicker addColor={this.addColor} />
-        <div id="currentColor" style={{backgroundColor: currentColor}}>
-          current color - select below to change
-        </div>
+
         <div className="container">
           <div id="paletteGrid">
             {this.state.colors.map((color, index) => (
@@ -45,6 +43,9 @@ class PalettesView extends React.Component {
                 <RemoveButton removeColor={this.removeColor} idx={index} />
               </div>
             ))}
+          </div>
+          <div id="currentColor" style={{backgroundColor: currentColor}}>
+            current color
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import InputColor from 'react-input-color'
-import {ColorSelect} from './addColor.js'
+import {ColorSelect} from './addColor'
 
 function ColorPicker(props) {
   const [color, setColor] = React.useState({})

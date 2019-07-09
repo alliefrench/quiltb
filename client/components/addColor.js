@@ -6,7 +6,7 @@ function AddColor(props) {
   return (
     <div>
       <div
-        className="paletteBtn"
+        // className="paletteBtn"
         id="selectColor"
         onClick={() => {
           props.setCurrColor(props.color)
