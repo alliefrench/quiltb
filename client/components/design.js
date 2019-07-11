@@ -9,6 +9,7 @@ import {ResetGrid} from './resetSquare'
 import {StatsCard} from './stats'
 import Instructions from './instructions'
 import {getGrids} from '../store/blocks'
+import {selectProject} from '../store/projects'
 
 class Design extends React.Component {
   constructor() {
@@ -18,11 +19,10 @@ class Design extends React.Component {
   }
 
   componentDidMount() {
-    this.props.isLoggedIn &&
-      this.props.fetchGrids(
-        this.props.isLoggedIn,
-        this.props.selectedProject.id
-      )
+    if (this.props.match.params.id) {
+      this.props.chooseProject(parseInt(this.props.match.params.id))
+    }
+    // this.props.fetchGrids(this.props.isLoggedIn, this.props.match.param s.id)
   }
 
   savedGrids() {
@@ -72,6 +72,7 @@ const mapDispatch = dispatch => {
   return {
     fetchGrids: (isLoggedIn, projectId) =>
       dispatch(getGrids(isLoggedIn, projectId)),
+    chooseProject: id => dispatch(selectProject(id)),
     changeColor: id => dispatch(updateBlockColor(id))
   }
 }
