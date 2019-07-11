@@ -1,6 +1,7 @@
 import parser from './parser'
 
 export default function shrinkBlock(blockArr) {
+  console.log('BLOCKARR', blockArr)
   const block = parser(blockArr)
   const tinyBlock = block.map(el => ({
     ...el,

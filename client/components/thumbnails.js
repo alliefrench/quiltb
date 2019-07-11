@@ -9,11 +9,11 @@ import {Thumbnail} from './thumbnail'
 function Thumbnails(props) {
   return (
     <div className="thumbnailContainer">
-      {props.grids.map((square, index) => (
-        <div key={square.id}>
-          <Thumbnail square={square} />
+      {props.grids.map((grid, index) => (
+        <div key={grid.id}>
+          <Thumbnail square={grid} />
           <div className="thumbnailBtnsDiv">
-            <DeleteGridButton idx={index} id={square.id} />
+            <DeleteGridButton idx={index} id={grid.id} />
             <EditGridButton idx={index} />
           </div>
         </div>
@@ -25,7 +25,7 @@ function Thumbnails(props) {
 const mapStateToProps = state => {
   return {
     selectedProject: state.projects.selectedProject,
-    grids: state.blocks.grids
+    grids: state.projects.selectedProject.squares
   }
 }
 

@@ -30,6 +30,7 @@ class Design extends React.Component {
   }
 
   render() {
+    console.log(this.props.grids)
     return (
       <div className="container">
         <div id="leftRender">
@@ -62,7 +63,7 @@ class Design extends React.Component {
 const mapStateToProps = state => {
   return {
     selectedProject: state.projects.selectedProject,
-    grids: state.blocks.grids,
+    grids: state.projects.selectedProject.squares,
     selectedGrid: state.blocks.selectedGrid,
     isLoggedIn: !!state.user.id
   }
