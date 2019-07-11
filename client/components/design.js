@@ -30,7 +30,6 @@ class Design extends React.Component {
   }
 
   render() {
-    console.log(this.props.grids)
     return (
       <div className="container">
         <div id="leftRender">
