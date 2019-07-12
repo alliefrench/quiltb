@@ -148,6 +148,7 @@ export default function(state = initialState, action) {
         }
       }
     case DELETE_GRID:
+      // need qualifier tor user or guest
       const remainingGrids = state.grids.filter(grid => grid.id !== action.id)
       return {
         ...state,

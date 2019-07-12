@@ -42,8 +42,6 @@ class Design extends React.Component {
           </div>
           <div className="dataColumn">
             <div className="thumbnailContainer">
-              {!this.savedGrids() && <Instructions />}
-
               {this.savedGrids() && <MakeThumbnail />}
             </div>
           </div>

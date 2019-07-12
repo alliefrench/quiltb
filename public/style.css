@@ -14,7 +14,7 @@ body label {
 .container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .MuiToolbar-regular-42 {
@@ -103,6 +103,10 @@ span {
   height: 30px;
   box-shadow: 3px 3px 5px grey;
   margin-top: 30px;
+}
+
+#leftRender .colorpicker {
+  justify-content: center;
 }
 
 #selectColor {
@@ -280,7 +284,7 @@ span {
   flex-wrap: wrap;
   flex-direction: row;
   max-height: 600px;
-  width: 300px;
+  width: 150px;
   overflow-y: scroll;
   margin-top: 30px;
   padding-bottom: 7px;
