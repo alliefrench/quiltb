@@ -10,7 +10,6 @@ import {StatsCard} from './stats'
 import Instructions from './instructions'
 import {getGrids} from '../store/blocks'
 import {selectProject} from '../store/projects'
-import ReinventedColorWheel from 'reinvented-color-wheel'
 
 class Design extends React.Component {
   constructor() {

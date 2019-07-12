@@ -8,7 +8,7 @@ function SavingGridView(props) {
   return (
     <div>
       <div
-        className="paletteBtn"
+        className="saveAndResetBtns"
         id="saveGridAsNew"
         onClick={() => {
           saveNew(props.buildingGrid.square, props.projectId)
@@ -18,7 +18,7 @@ function SavingGridView(props) {
       </div>
       {props.buildingGrid.id !== null && (
         <div
-          className="paletteBtn"
+          className="saveAndResetBtns"
           id="saveGrid"
           onClick={() => {
             props.saveChanges(props.buildingGrid)

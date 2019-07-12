@@ -53,7 +53,6 @@ body form div {
 }
 
 .colorTools {
-  margin-top: 30px;
   max-width: 400px;
 }
 
@@ -94,15 +93,16 @@ span {
   height: 50px;
 }
 
-#colorpicker {
+.colorpicker {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   background-color: grey;
   color: white;
   font-family: 'Roboto';
   height: 30px;
   box-shadow: 3px 3px 5px grey;
+  margin-top: 30px;
 }
 
 #selectColor {
@@ -141,6 +141,7 @@ span {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  width: 480px;
 }
 
 .thumbnails {
@@ -218,6 +219,7 @@ span {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  align-items: center;
 }
 
 #blanketMaster {
@@ -236,23 +238,21 @@ span {
   width: 140px;
 }
 
-#borderColor {
-  margin-left: 20px;
-  width: 140px;
+.paletteBtn {
+  text-decoration: underline;
+  color: white;
 }
 
-.paletteBtn {
+.saveAndResetBtns {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 10px;
   background-color: grey;
-  border-radius: 5px;
+  box-shadow: 3px 3px 5px grey;
   color: white;
-  font-family: 'Roboto';
   width: 80px;
   height: 30px;
-  box-shadow: 3px 3px 5px grey;
 }
 
 .areaField {
@@ -336,7 +336,6 @@ span {
   text-align: center;
   margin: 10px;
   background-color: grey;
-  border-radius: 5px;
   color: white;
   font-family: 'Roboto';
   height: 50px;

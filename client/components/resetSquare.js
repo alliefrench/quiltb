@@ -5,7 +5,7 @@ import {resetGrid} from '../store/blocks'
 function ResetGridView(props) {
   return (
     <div
-      className="paletteBtn"
+      className="saveAndResetBtns"
       id="resetGrid"
       onClick={() => {
         props.clearGrid()

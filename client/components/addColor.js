@@ -6,15 +6,14 @@ function AddColor(props) {
   return (
     <div>
       <div
-        // className="paletteBtn"
+        className="paletteBtn"
         id="selectColor"
         onClick={() => {
           props.setCurrColor(props.color)
           props.addColor(props.color)
         }}
-        // style={{backgroundColor: props.color}}
       >
-        add
+        add to palette
       </div>
     </div>
   )

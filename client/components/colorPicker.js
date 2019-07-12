@@ -6,7 +6,7 @@ function ColorPicker(props) {
   const [color, setColor] = React.useState({})
 
   return (
-    <div id="colorpicker">
+    <div class="colorpicker">
       <InputColor
         initialHexColor="#F9AA33"
         onChange={setColor}
