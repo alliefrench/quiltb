@@ -10,6 +10,7 @@ import {StatsCard} from './stats'
 import Instructions from './instructions'
 import {getGrids} from '../store/blocks'
 import {selectProject} from '../store/projects'
+import ReinventedColorWheel from 'reinvented-color-wheel'
 
 class Design extends React.Component {
   constructor() {
@@ -26,7 +27,11 @@ class Design extends React.Component {
   }
 
   savedGrids() {
-    return this.props.grids.length > 0
+    if (!this.props.isLoggedIn) {
+      return false
+    } else {
+      return this.props.grids.length > 0
+    }
   }
 
   render() {
@@ -45,7 +50,7 @@ class Design extends React.Component {
             <div className="thumbnailContainer">
               {!this.savedGrids() && <Instructions />}
 
-              {this.props.grids.length > 0 && <MakeThumbnail />}
+              {this.savedGrids() && <MakeThumbnail />}
             </div>
           </div>
         </div>
