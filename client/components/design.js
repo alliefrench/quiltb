@@ -23,15 +23,10 @@ class Design extends React.Component {
     if (this.props.match.params.id) {
       this.props.chooseProject(parseInt(this.props.match.params.id))
     }
-    // this.props.fetchGrids(this.props.isLoggedIn, this.props.match.param s.id)
   }
 
   savedGrids() {
-    if (!this.props.isLoggedIn) {
-      return false
-    } else {
-      return this.props.grids.length > 0
-    }
+    return this.props.userGrids || this.props.guestGrids.length > 0
   }
 
   render() {
@@ -67,7 +62,8 @@ class Design extends React.Component {
 const mapStateToProps = state => {
   return {
     selectedProject: state.projects.selectedProject,
-    grids: state.projects.selectedProject.squares,
+    userGrids: state.projects.selectedProject.squares,
+    guestGrids: state.blocks.grids,
     selectedGrid: state.blocks.selectedGrid,
     isLoggedIn: !!state.user.id
   }
