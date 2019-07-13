@@ -23,8 +23,22 @@ body label {
 
 #header {
   background-image: url('quilt_star_grey.svg');
-  height: 160px;
+  background-size: 255px;
+  height: 260px;
   box-shadow: 3px 3px 5px rgb(66, 66, 66);
+  animation-name: test;
+  animation-duration: 3s;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes test {
+  from {
+    height: 260px;
+  }
+  to {
+    height: 0px;
+  }
 }
 
 #navigation {
