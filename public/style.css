@@ -21,25 +21,40 @@ body label {
   min-height: 40px;
 }
 
+#header {
+  background-image: url('quilt_star_grey.svg');
+  height: 160px;
+  box-shadow: 3px 3px 5px rgb(66, 66, 66);
+}
+
+#navigation {
+  display: flex;
+  justify-content: space-around;
+  height: 60px;
+  background-color: #808080;
+  box-shadow: 3px 3px 5px rgb(66, 66, 66);
+}
+
 .navBtn {
   color: white;
 }
 
 .links {
   display: flex;
-  width: 400px;
   justify-content: space-around;
-  margin-left: 40px;
+  align-items: center;
 }
 
 .links a {
   color: white;
+  margin-left: 50px;
 }
 
 #logo {
   color: white;
   margin-left: 30px;
   margin-top: 10px;
+  font-family: 'Caveat', cursive;
 }
 
 body nav a {
@@ -50,6 +65,30 @@ body nav a {
 body form div {
   margin: 1em;
   display: inline-block;
+}
+
+#userHome {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.projects {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+.singleProject {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.singleProject a {
+  color: #383535;
 }
 
 .colorTools {

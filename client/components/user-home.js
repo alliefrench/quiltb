@@ -13,7 +13,7 @@ export const UserHome = props => {
   const history = createBrowserHistory()
 
   return (
-    <div>
+    <div id="userHome">
       <h3>Welcome, {email}</h3>
       <UserProjects />
       <AddProjectForm />

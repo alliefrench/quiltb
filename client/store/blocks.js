@@ -48,6 +48,7 @@ export const updateBlockColor = id => dispatch => {
 export const saveGrid = (grid, projectId) => async dispatch => {
   try {
     const currGrid = {square: JSON.stringify(grid), projectId}
+    console.log('currGrid', currGrid)
     const {data} = await axios.post('/api/squares', currGrid)
     dispatch(savingGrid(data))
   } catch (error) {

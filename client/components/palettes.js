@@ -8,7 +8,7 @@ class PalettesView extends React.Component {
   constructor() {
     super()
     this.state = {
-      colors: ['#F9AA33', '#32aafa', '#216897']
+      colors: ['#C84630', '#D4A0A7', '#E3E3E3', '#898989', '#5DA271']
     }
     this.addColor = this.addColor.bind(this)
     this.removeColor = this.removeColor.bind(this)

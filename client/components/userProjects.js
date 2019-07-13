@@ -15,25 +15,30 @@ class UserProjects extends React.Component {
   }
 
   render() {
-    return this.props.projects ? (
-      this.props.projects.map(project => (
-        <div
-          key={project.id}
-          onClick={() => {
-            this.props.chooseProject(project.id)
-            this.props.resettingGrids()
-          }}
-        >
-          {project.squares &&
-            project.squares.length > 0 && (
-              <Thumbnail square={project.squares[0]} />
-            )}
+    return (
+      <div className="projects">
+        {this.props.projects ? (
+          this.props.projects.map(project => (
+            <div
+              className="singleProject"
+              key={project.id}
+              onClick={() => {
+                this.props.chooseProject(project.id)
+                this.props.resettingGrids()
+              }}
+            >
+              {project.squares &&
+                project.squares.length > 0 && (
+                  <Thumbnail square={project.squares[0]} />
+                )}
 
-          <Link to={`/design/${project.id}`}>{project.name}</Link>
-        </div>
-      ))
-    ) : (
-      <div>No projects yet!</div>
+              <Link to={`/design/${project.id}`}>{project.name}</Link>
+            </div>
+          ))
+        ) : (
+          <div>No projects yet!</div>
+        )}
+      </div>
     )
   }
 }

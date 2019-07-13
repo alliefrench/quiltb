@@ -5,9 +5,9 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div id="header">
-    <h1 id="logo">quiltB</h1>
-    <div>
+  <div id="navigation">
+    <h1 id="logo">q u i l t B</h1>
+    <div className="links">
       {isLoggedIn ? (
         <div>
           <Link to="/home">Home</Link>
@@ -17,12 +17,18 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         </div>
       ) : (
         <div>
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
+          <Link to="/login" className="navBtn">
+            Login
+          </Link>
+          <Link to="/signup" className="navBtn">
+            Sign Up
+          </Link>
         </div>
       )}
+      <Link to="/design" className="navBtn">
+        Design
+      </Link>
     </div>
-    <hr />
   </div>
 )
 
