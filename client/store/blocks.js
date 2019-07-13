@@ -22,7 +22,7 @@ const updatingGrid = grid => ({type: UPDATE_GRID, grid})
 const chooseGrid = grid => ({type: SELECT_GRID, grid})
 const resettingGrid = () => ({type: RESET_BUILDING_GRID})
 const editingGrid = idx => ({type: EDIT_GRID, idx})
-const removeGrid = id => ({type: DELETE_GRID, id})
+const removeGrid = (isLoggedIn, id) => ({type: DELETE_GRID, isLoggedIn, id})
 const resettingGrids = () => ({type: RESET_GRIDS})
 
 export const getGrids = (isLoggedIn, projectId) => async dispatch => {
@@ -88,7 +88,7 @@ export const deleteGrid = (isLoggedIn, id) => async dispatch => {
   if (isLoggedIn) {
     await axios.delete(`/api/squares`, {data: {id}})
   }
-  dispatch(removeGrid(id))
+  dispatch(removeGrid(isLoggedIn, id))
 }
 
 export const resetGrids = () => dispatch => {
@@ -148,8 +148,9 @@ export default function(state = initialState, action) {
         }
       }
     case DELETE_GRID:
-      // need qualifier tor user or guest
-      const remainingGrids = state.grids.filter(grid => grid.id !== action.id)
+      const remainingGrids = state.grids.filter(
+        (grid, index) => (action.isLoggedIn ? grid.id : index !== action.id)
+      )
       return {
         ...state,
         grids: remainingGrids
