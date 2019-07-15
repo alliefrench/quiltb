@@ -27,7 +27,7 @@ class ProjectForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="projectForm">
         <form onSubmit={this.handleSubmit}>
           <input
             name="name"

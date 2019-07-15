@@ -29,7 +29,7 @@ export const createTriangleBlocks = () => {
         y: block.y,
         points: [point],
         id: block['blockId'] + index,
-        fill: '#d2d4d8'
+        fill: '#E3E3E3'
       })
     })
   })
