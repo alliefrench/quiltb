@@ -7,7 +7,6 @@ import {connect} from 'react-redux'
 import GenerateBlanket from './altBlanketGenerator'
 import {ResetGrid} from './resetSquare'
 import {StatsCard} from './stats'
-import Instructions from './instructions'
 import {getGrids} from '../store/blocks'
 import {selectProject} from '../store/projects'
 
@@ -19,13 +18,14 @@ class Design extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.match.params.id) {
-      this.props.chooseProject(parseInt(this.props.match.params.id))
-    }
+    // if (this.props.match.params.id) {
+    //   this.props.chooseProject(parseInt(this.props.match.params.id))
+    // }
+    this.props.fetchGrids(this.props.isLoggedIn, this.props.selectedProject.id)
   }
 
   savedGrids() {
-    return this.props.userGrids || this.props.guestGrids.length > 0
+    return this.props.grids.length > 0
   }
 
   render() {
@@ -59,8 +59,7 @@ class Design extends React.Component {
 const mapStateToProps = state => {
   return {
     selectedProject: state.projects.selectedProject,
-    userGrids: state.projects.selectedProject.squares,
-    guestGrids: state.blocks.grids,
+    grids: state.blocks.grids,
     selectedGrid: state.blocks.selectedGrid,
     isLoggedIn: !!state.user.id
   }
@@ -70,8 +69,8 @@ const mapDispatch = dispatch => {
   return {
     fetchGrids: (isLoggedIn, projectId) =>
       dispatch(getGrids(isLoggedIn, projectId)),
-    chooseProject: id => dispatch(selectProject(id)),
-    changeColor: id => dispatch(updateBlockColor(id))
+    chooseProject: id => dispatch(selectProject(id))
+    // changeColor: id => dispatch(updateBlockColor(id))
   }
 }
 
