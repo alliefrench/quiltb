@@ -28,7 +28,7 @@ body label {
   box-shadow: 3px 3px 5px rgb(66, 66, 66);
   animation-name: test;
   animation-duration: 3s;
-  animation-delay: 2s;
+  animation-delay: 1s;
   animation-fill-mode: forwards;
 }
 
@@ -113,6 +113,9 @@ body form div {
 }
 
 #projectForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #bdbdbd;
   width: 400px;
   height: 50px;
