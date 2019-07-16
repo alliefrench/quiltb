@@ -149,9 +149,7 @@ export default function(state = initialState, action) {
         }
       }
     case DELETE_GRID:
-      const remainingGrids = state.grids.filter(
-        (grid, index) => (action.isLoggedIn ? grid.id : index !== action.id)
-      )
+      const remainingGrids = state.grids.filter(grid => grid.id !== action.id)
       return {
         ...state,
         grids: remainingGrids

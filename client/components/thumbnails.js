@@ -7,11 +7,11 @@ import {EditGridButton} from './editThumbnail'
 import {Thumbnail} from './thumbnail'
 
 function Thumbnails(props) {
-  const grids = props.userGrids ? props.userGrids : props.guestGrids
+  // const grids = props.userGrids ? props.userGrids : props.guestGrids
 
   return (
     <div className="thumbnailContainer">
-      {grids.map((grid, index) => (
+      {props.grids.map((grid, index) => (
         <div key={grid.id}>
           <Thumbnail square={grid} />
           <div className="thumbnailBtnsDiv">
@@ -27,8 +27,7 @@ function Thumbnails(props) {
 const mapStateToProps = state => {
   return {
     selectedProject: state.projects.selectedProject,
-    userGrids: state.projects.selectedProject.squares,
-    guestGrids: state.blocks.grids
+    grids: state.blocks.grids
   }
 }
 

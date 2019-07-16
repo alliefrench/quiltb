@@ -3,13 +3,13 @@ import {connect} from 'react-redux'
 import {deleteGrid} from '../store/blocks'
 
 function DeleteGrid(props) {
-  const identifier = props.id ? props.id : props.idx
+  // const identifier = props.id ? props.id : props.idx
 
   return (
     <div
       className="deleteBtn"
       onClick={() => {
-        props.removeGrid(props.isLoggedIn, identifier)
+        props.removeGrid(props.isLoggedIn, props.id)
       }}
     >
       x
