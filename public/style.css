@@ -90,6 +90,7 @@ body form div {
 
 .projects {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   margin: 20px;
   background-color: #bdbdbd;

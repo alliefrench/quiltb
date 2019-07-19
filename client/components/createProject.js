@@ -22,6 +22,7 @@ class ProjectForm extends React.Component {
     const project = {name: this.state.name, userId: this.props.userId}
     evt.preventDefault()
     this.props.addProject(project)
+    this.setState({name: ''})
     this.props.fetchProjects()
   }
 
