@@ -4,6 +4,7 @@ import {getProjects, selectProject} from '../store/projects'
 import {resetGrids} from '../store/blocks'
 import {Link} from 'react-router-dom'
 import {Thumbnail} from './thumbnail'
+import {DeleteProjectButton} from './deleteProject'
 
 class UserProjects extends React.Component {
   constructor() {
@@ -33,6 +34,7 @@ class UserProjects extends React.Component {
                 )}
 
               <Link to={`/design/${project.id}`}>{project.name}</Link>
+              <DeleteProjectButton squares={project.squares} id={project.id} />
             </div>
           ))
         ) : (

@@ -35,3 +35,14 @@ router.post('/', async (req, res, next) => {
     next(error)
   }
 })
+
+router.delete('/', async (req, res, next) => {
+  try {
+    const data = await Projects.destroy({
+      where: {id: req.body.id}
+    })
+    res.sendStatus(202)
+  } catch (error) {
+    console.error(error)
+  }
+})

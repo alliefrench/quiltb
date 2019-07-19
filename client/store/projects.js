@@ -46,7 +46,7 @@ export const createProject = project => async dispatch => {
 
 export const deleteProject = id => async dispatch => {
   try {
-    await axios.delete('/api/projects', id)
+    await axios.delete('/api/projects', {data: {id}})
     dispatch(removeProject(id))
   } catch (error) {
     console.error(error)

@@ -37,7 +37,6 @@ router.put('/:id', async (req, res, next) => {
 })
 
 router.delete('/', async (req, res, next) => {
-  console.log('sq delete route', req.body)
   try {
     const data = await Squares.destroy({
       where: {id: req.body.id}
