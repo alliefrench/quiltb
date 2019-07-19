@@ -434,3 +434,15 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+#loginSignup {
+  background-color: #bdbdbd;
+  display: flex;
+  align-items: baseline;
+}
+
+#loginSignup a {
+  color: #363636;
+  text-decoration: underline;
+  font-size: 12px;
+}
