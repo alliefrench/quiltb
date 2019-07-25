@@ -1,14 +1,14 @@
 const User = require('./user')
-const Projects = require('./projects')
-const Squares = require('./squares')
+const Project = require('./project')
+const Square = require('./square')
 
-Projects.belongsTo(User)
-User.hasMany(Projects)
-Squares.belongsTo(Projects)
-Projects.hasMany(Squares)
+Project.belongsTo(User)
+User.hasMany(Project)
+Square.belongsTo(Project)
+Project.hasMany(Square)
 
 module.exports = {
   User,
-  Projects,
-  Squares
+  Project,
+  Square
 }

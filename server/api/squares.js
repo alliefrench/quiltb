@@ -1,10 +1,10 @@
 const router = require('express').Router()
-const {Squares} = require('../db/models')
+const {Square} = require('../db/models')
 module.exports = router
 
 router.get('/:projectId', async (req, res, next) => {
   try {
-    const squares = await Squares.findAll({
+    const squares = await Square.findAll({
       where: {projectId: req.params.projectId}
     })
     res.send(squares)
@@ -15,7 +15,7 @@ router.get('/:projectId', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const square = await Squares.create(req.body)
+    const square = await Square.create(req.body)
     res.send(square)
   } catch (error) {
     next(error)
@@ -24,7 +24,7 @@ router.post('/', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
-    const square = await Squares.update(
+    const square = await Square.update(
       {
         square: req.body.square
       },
@@ -38,7 +38,7 @@ router.put('/:id', async (req, res, next) => {
 
 router.delete('/', async (req, res, next) => {
   try {
-    const data = await Squares.destroy({
+    const data = await Square.destroy({
       where: {id: req.body.id}
     })
     res.sendStatus(202)
