@@ -1,17 +1,18 @@
 import axios from 'axios'
 import parser from '../components/utils/parser'
-import {runInNewContext} from 'vm'
 
 const GET_PROJECTS = 'GET_PROJECTS'
 const GET_PROJECT = 'GET_PROJECT'
 const CREATE_PROJECT = 'CREATE_PROJECT'
 const SELECT_PROJECT = 'SELECT_PROJECT'
 const DELETE_PROJECT = 'DELETE_PROJECT'
+const CLEAR_PROJECTS = 'CLEAR_PROJECTS'
 
 const gettingProjects = projects => ({type: GET_PROJECTS, projects})
 const addProject = project => ({type: CREATE_PROJECT, project})
 const chooseProject = id => ({type: SELECT_PROJECT, id})
 const removeProject = id => ({type: DELETE_PROJECT, id})
+const clearingProjects = () => ({type: CLEAR_PROJECTS})
 
 export const getProjects = () => async dispatch => {
   try {
@@ -53,6 +54,10 @@ export const deleteProject = id => async dispatch => {
   }
 }
 
+export const clearProjects = () => dispatch => {
+  dispatch(clearingProjects())
+}
+
 const initialState = {
   all: [],
   selectedProject: {}
@@ -75,6 +80,8 @@ export default function(state = initialState, action) {
         ...state,
         all: state.all.filter(project => project.id !== action.id)
       }
+    case CLEAR_PROJECTS:
+      return initialState
     default:
       return state
   }
