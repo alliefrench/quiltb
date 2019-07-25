@@ -1,12 +1,12 @@
 const router = require('express').Router()
-const {Projects, Squares} = require('../db/models')
+const {Project, Square} = require('../db/models')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
-    const projects = await Projects.findAll({
+    const projects = await Project.findAll({
       where: {userId: req.user.id},
-      include: {model: Squares}
+      include: {model: Square}
     })
 
     res.json(projects)
@@ -17,9 +17,9 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   try {
-    const project = await Projects.findOne({
+    const project = await Project.findOne({
       where: {id: req.params.id},
-      include: {model: Squares}
+      include: {model: Square}
     })
     res.json(project)
   } catch (error) {
@@ -29,7 +29,7 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const project = await Projects.create(req.body)
+    const project = await Project.create(req.body)
     res.send(project)
   } catch (error) {
     next(error)
@@ -38,7 +38,7 @@ router.post('/', async (req, res, next) => {
 
 router.delete('/', async (req, res, next) => {
   try {
-    const data = await Projects.destroy({
+    const data = await Project.destroy({
       where: {id: req.body.id}
     })
     res.sendStatus(202)

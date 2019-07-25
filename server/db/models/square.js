@@ -1,10 +1,10 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const Squares = db.define('squares', {
+const Square = db.define('square', {
   square: {
     type: Sequelize.TEXT
   }
 })
 
-module.exports = Squares
+module.exports = Square
