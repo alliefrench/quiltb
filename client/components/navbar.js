@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import {clearProjects} from '../store/projects'
+import {resetGrids} from '../store/blocks'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div id="navigation">
@@ -45,6 +47,8 @@ const mapDispatch = dispatch => {
   return {
     handleClick() {
       dispatch(logout())
+      dispatch(resetGrids())
+      dispatch(clearProjects())
     }
   }
 }
