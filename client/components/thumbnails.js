@@ -7,12 +7,10 @@ import {EditGridButton} from './editThumbnail'
 import {Thumbnail} from './thumbnail'
 
 function Thumbnails(props) {
-  // const grids = props.userGrids ? props.userGrids : props.guestGrids
-
   return (
     <div className="thumbnailContainer">
       {props.grids.map((grid, index) => (
-        <div key={grid.id}>
+        <div key={grid.id ? grid.id : index}>
           <Thumbnail square={grid} />
           <div className="thumbnailBtnsDiv">
             <DeleteGridButton idx={index} id={grid.id} />

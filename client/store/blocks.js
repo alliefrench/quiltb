@@ -10,6 +10,7 @@ const SAVE_GRID = 'SAVE_GRID'
 const UPDATE_GRID = 'UPDATE_GRID'
 const SELECT_GRID = 'SELECT_GRID'
 const DELETE_GRID = 'DELETE_GRID'
+const CLEAR_GRID = 'CLEAR_GRID'
 const EDIT_GRID = 'EDIT_GRID'
 const RESET_BUILDING_GRID = 'RESET_BUILDING_GRID'
 const RESET_GRIDS = 'RESET_GRIDS'
@@ -23,6 +24,7 @@ const chooseGrid = grid => ({type: SELECT_GRID, grid})
 const resettingGrid = () => ({type: RESET_BUILDING_GRID})
 const editingGrid = idx => ({type: EDIT_GRID, idx})
 const removeGrid = (isLoggedIn, id) => ({type: DELETE_GRID, isLoggedIn, id})
+const clearGuestGrid = id => ({type: CLEAR_GRID, id})
 const resettingGrids = () => ({type: RESET_GRIDS})
 
 export const getGrids = (isLoggedIn, projectId) => async dispatch => {
@@ -60,7 +62,6 @@ export const updateGrid = grid => async dispatch => {
   try {
     const currGrid = {square: JSON.stringify(grid.square)}
     const {data} = await axios.put(`/api/squares/${grid.id}`, currGrid)
-    console.log('DATA', data)
     dispatch(updatingGrid(data[1][0]))
   } catch (error) {
     console.error(error)
@@ -86,10 +87,13 @@ export const editGrid = idx => dispatch => {
 }
 
 export const deleteGrid = (isLoggedIn, id) => async dispatch => {
+  console.log('delete ID', id)
   if (isLoggedIn) {
     await axios.delete(`/api/squares`, {data: {id}})
+    dispatch(removeGrid(isLoggedIn, id))
+  } else {
+    dispatch(clearGuestGrid(id))
   }
-  dispatch(removeGrid(isLoggedIn, id))
 }
 
 export const resetGrids = () => dispatch => {
@@ -153,6 +157,14 @@ export default function(state = initialState, action) {
       return {
         ...state,
         grids: remainingGrids
+      }
+    case CLEAR_GRID:
+      const guestGrids = state.grids.filter(
+        (grid, index) => index !== action.id
+      )
+      return {
+        ...state,
+        grids: guestGrids
       }
     case RESET_GRIDS:
       return initialState
