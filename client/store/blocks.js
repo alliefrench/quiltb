@@ -5,7 +5,8 @@ import axios from 'axios'
 
 const GET_GRIDS = 'GET_GRIDS'
 const SET_COLOR = 'SET_COLOR'
-const UPDATE_BUILDING_GRID = 'UPDATE_BUILDING_GRID'
+const UPDATE_TRIANGLE_COLOR = 'UPDATE_TRIANGLE_COLOR'
+const UPDATE_TRIANGE_OPACITY = 'UPDATE_TRIANGLE_OPACITY'
 const SAVE_GRID = 'SAVE_GRID'
 const UPDATE_GRID = 'UPDATE_GRID'
 const SELECT_GRID = 'SELECT_GRID'
@@ -17,7 +18,12 @@ const RESET_GRIDS = 'RESET_GRIDS'
 
 const gettingGrids = grids => ({type: GET_GRIDS, grids})
 const setColor = hex => ({type: SET_COLOR, hex})
-const changeBlockColor = id => ({type: UPDATE_BUILDING_GRID, id})
+const changeBlockColor = id => ({type: UPDATE_TRIANGLE_COLOR, id})
+const changingBlockOpacity = (id, opacity) => ({
+  type: UPDATE_TRIANGE_OPACITY,
+  id,
+  opacity
+})
 const savingGrid = grid => ({type: SAVE_GRID, grid})
 const updatingGrid = grid => ({type: UPDATE_GRID, grid})
 const chooseGrid = grid => ({type: SELECT_GRID, grid})
@@ -44,6 +50,10 @@ export const setCurrentColor = hex => dispatch => {
 
 export const updateBlockColor = id => dispatch => {
   dispatch(changeBlockColor(id))
+}
+
+export const changeBlockOpacity = (id, opacity) => dispatch => {
+  dispatch(changingBlockOpacity(id, opacity))
 }
 
 // for logged-in users
@@ -116,7 +126,7 @@ export default function(state = initialState, action) {
       return {...state, grids: action.grids}
     case SET_COLOR:
       return {...state, currentColor: action.hex}
-    case UPDATE_BUILDING_GRID:
+    case UPDATE_TRIANGLE_COLOR:
       return {
         ...state,
         buildingGrid: {
@@ -124,6 +134,20 @@ export default function(state = initialState, action) {
           square: state.buildingGrid.square.map(el => {
             if (el.id === action.id) {
               return {...el, fill: state.currentColor}
+            } else {
+              return el
+            }
+          })
+        }
+      }
+    case UPDATE_TRIANGE_OPACITY:
+      return {
+        ...state,
+        buildingGrid: {
+          ...state.buildingGrid,
+          square: state.buildingGrid.square.map(el => {
+            if (el.id === action.id) {
+              return {...el, opacity: action.opacity}
             } else {
               return el
             }
