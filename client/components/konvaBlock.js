@@ -6,16 +6,18 @@ import {updateBlockColor, changeBlockOpacity} from '../store/blocks'
 import parser from './utils/parser'
 
 function DesignBlock(props) {
-  const [opacity, setOpacity] = useState(1)
+  // const [opaque, setOpacity] = useState(1)
+  // const [transparent, setTransparency] = useState(0.5)
+  // const [square, setSquare] = useState(parser(props.blocks.square))
 
   const bigSquare = parser(props.blocks.square)
 
   function mouseEnter(event) {
-    props.makeTransparent(event.target)
+    props.changeOpacity(event.target.index, 0.5)
   }
 
   function mouseLeave(event) {
-    props.makeOpaque(event.target)
+    props.changeOpacity(event.target.index, 1)
   }
 
   return (
@@ -30,12 +32,10 @@ function DesignBlock(props) {
               points={triangle.points[0]}
               closed
               fill={triangle.fill}
-              opacity={opacity}
-              onMouseEnter={e => props.makeTransparent(e.target._id - 2, 0.5)}
-              // onMouseOver={mouseEnter}
-              onMouseLeave={e => props.makeOpaque(e.target._id - 2, 1)}
+              opacity={triangle.opacity}
+              onMouseEnter={mouseEnter}
+              onMouseLeave={mouseLeave}
               onClick={() => props.changeColor(triangle.id)}
-              onM
             />
           ))}
         </Layer>
@@ -53,11 +53,9 @@ const mapStateToProps = state => {
 const mapDispatch = dispatch => {
   return {
     changeColor: id => dispatch(updateBlockColor(id)),
-    makeTransparent: (id, opacity) => {
-      console.log(id)
+    changeOpacity: (id, opacity) => {
       dispatch(changeBlockOpacity(id, opacity))
-    },
-    makeOpaque: (id, opacity) => dispatch(changeBlockOpacity(id, opacity))
+    }
   }
 }
 
