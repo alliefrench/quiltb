@@ -1,15 +1,11 @@
 /* eslint-disable no-return-assign */
-import React, {useState} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
 import {Stage, Layer, Line} from 'react-konva'
 import {updateBlockColor, changeBlockOpacity} from '../store/blocks'
 import parser from './utils/parser'
 
 function DesignBlock(props) {
-  // const [opaque, setOpacity] = useState(1)
-  // const [transparent, setTransparency] = useState(0.5)
-  // const [square, setSquare] = useState(parser(props.blocks.square))
-
   const bigSquare = parser(props.blocks.square)
 
   function mouseEnter(event) {
