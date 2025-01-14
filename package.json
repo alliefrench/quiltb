@@ -42,8 +42,8 @@
     "axios": "^0.18.1",
     "compression": "^1.7.3",
     "connect-session-sequelize": "^6.0.0",
-    "express": "^4.16.4",
-    "express-session": "^1.15.1",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
     "history": "^4.9.0",
     "konva": "^3.2.5",
     "lodash": "^4.17.14",
@@ -63,7 +63,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "sequelize": "^5.15.1",
-    "socket.io": "^2.2.0"
+    "socket.io": "^4.8.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
